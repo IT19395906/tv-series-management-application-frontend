@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg main-navbar sticky">
+    <div class="form-inline me-auto">
+        <ul class="navbar-nav msr-3">
+            <li>
+                <a data-toggle="sidebar" class="nav-link nav-link-lg collapse-btn msl-3">
+                    <i class="fas fas fa-bars text-primary" name="menu"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav navbar-right">
+        <li>
+            <button mat-button type="button" [matMenuTriggerFor]="menu" class="round-button">
+                <span>
+                    <i class="fa fa-user"></i>
+                </span>
+            </button>
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="confirmLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </mat-menu>
+        </li>
+        <li>
+            <div class="user-details">
+                <h1 class="username">Aish</h1>
+                <span class="userrole">Admin</span>
+            </div>
+        </li>
+    </ul>
+</nav>
