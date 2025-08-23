@@ -1,0 +1,99 @@
+<div class="container mt-5">
+    <div class="card mx-auto w-75 rounded shadow" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);">
+        <div class="card-header text-center bg-primary text-white">
+            <h4>Upload TV Series</h4>
+        </div>
+        <div class="card-body">
+            <form>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label"><b>Category</b></label>
+                    <select id="category" class="form-select" formControlName="category" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="Action">Action</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Horror">Horror</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label"><b>Title</b></label>
+                    <input type="text" id="title" class="form-control" formControlName="title" required maxlength="50"
+                        placeholder="Enter TV Series title">
+                </div>
+
+                <div class="mb-3">
+                    <label for="language" class="form-label"><b>Language</b></label>
+                    <select id="language" class="form-select" formControlName="language" required>
+                        <option value="" disabled selected>Select a language</option>
+                        <option value="English (US)">English (US)</option>
+                        <option value="Sinhala">Sinhala</option>
+                        <option value="German">German</option>
+                        <option value="Hindi">Hindi</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" class="form-control" formControlName="description" style="resize: none;"
+                        rows="4" placeholder="Enter a brief description of the TV Series"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="releaseDate" class="form-label">Release Date</label>
+                    <input type="date" id="releaseDate" class="form-control" formControlName="releaseDate" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="seasons" class="form-label">Number of Seasons</label>
+                    <input type="number" id="seasons" class="form-control" formControlName="seasons" required min="1"
+                        max="50" placeholder="Enter number of seasons">
+                </div>
+
+                <div class="mb-3">
+                    <label for="episodes" class="form-label">Total no of episodes</label>
+                    <input type="number" id="episodes" class="form-control" formControlName="episodes" required min="1"
+                        max="50" placeholder="Enter number of episodes">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" id="image" class="form-control" formControlName="image" required
+                        accept="image/*">
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Ongoing or not</label>
+                    <div class="form-check">
+                        <input type="radio" id="ongoing" name="status" class="form-check-input" formControlName="status"
+                            value="Ongoing" required>
+                        <label for="ongoing" class="form-check-label">Ongoing</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="complete" name="status" class="form-check-input"
+                            formControlName="status" value="Complete">
+                        <label for="complete" class="form-check-label">Complete</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="episodes" class="form-label">Trailer URL</label>
+                    <input type="number" id="episodes" class="form-control" formControlName="episodes" required min="1"
+                        max="50" placeholder="Enter number of episodes">
+                </div>
+
+                <div class="mb-3">
+                    <label for="episodes" class="form-label">File</label>
+                    <input type="number" id="episodes" class="form-control" formControlName="episodes" required min="1"
+                        max="50" placeholder="Enter number of episodes">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

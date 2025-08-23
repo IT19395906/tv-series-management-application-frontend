@@ -10,8 +10,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';            
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeatherModule } from 'angular-feather';
+import { AddItemComponent } from './add-item/add-item.component';
 import {
   Facebook,
   Twitter,
@@ -60,13 +66,20 @@ const icons = {
     HeaderComponent,
     FooterComponent,
     MainpageComponent,
-    SidebarComponent
+    SidebarComponent,
+    AddItemComponent
   ],
   imports: [
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     BrowserModule,
     AppRoutingModule,
     FeatherModule.pick(icons),

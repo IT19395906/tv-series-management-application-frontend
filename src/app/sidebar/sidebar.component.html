@@ -4,36 +4,34 @@
     <div class="menu ">
       <ul class="list"
         [ngStyle]="{'position' : 'relative', 'max-height' : listMaxHeight+'px', 'max-width' : listMaxWidth+'px'}">
-         <ng-container *ngFor="let sidebarItem of sidebarItems">
-        <li 
-          [routerLinkActive]="sidebarItem.submenu.length !== 0 ? 'active' : 'active-top'" class="myNavStyle">
-          <div class="header" *ngIf="sidebarItem.groupTitle === true">{{sidebarItem.title }}</div>
-          <a [routerLink]="sidebarItem.class === '' ? [sidebarItem.path] : null" *ngIf="!sidebarItem.groupTitle;"
-            [ngClass]="[sidebarItem.class]"
-            class="menu-top">
-            <span class="hide-menu">{{sidebarItem.title}}
-            </span>
-            <span *ngIf="sidebarItem.badge !== '' " [ngClass]="[sidebarItem.badgeClass]">{{sidebarItem.badge}}</span>
-          </a>
-          <ul class="ml-menu sidebar-style" *ngIf="sidebarItem.submenu.length > 0">
-            <li *ngFor="let sidebarSubItem1 of sidebarItem.submenu"
-              [routerLinkActive]="sidebarSubItem1.submenu.length > 0 ? '' : 'active'" class="sidebar-style">
-              <a [routerLink]="sidebarSubItem1.submenu.length > 0 ? null : [sidebarSubItem1.path]"
-                [ngClass]="[sidebarSubItem1.class]">
-                {{sidebarSubItem1.title}}
-              </a>
-              <ul class="ml-menu-2 sidebar-style" *ngIf="sidebarSubItem1.submenu.length > 0">
-                <li *ngFor="let sidebarSubItem2 of sidebarSubItem1.submenu"
-                  [routerLinkActive]="sidebarSubItem2.submenu.length > 0 ? '' : 'active'" class="sidebar-style">
-                  <a [routerLink]="sidebarSubItem2.submenu.length > 0 ? null : [sidebarSubItem2.path]"
-                    [ngClass]="[sidebarSubItem2.class]">
-                    {{sidebarSubItem2.title }}
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+        <ng-container *ngFor="let sidebarItem of sidebarItems">
+          <li [routerLinkActive]="sidebarItem.submenu.length !== 0 ? 'active' : 'active-top'" class="myNavStyle">
+            <div class="header" *ngIf="sidebarItem.groupTitle === true">{{sidebarItem.title }}</div>
+            <a [routerLink]="sidebarItem.class === '' ? [sidebarItem.path] : null" *ngIf="!sidebarItem.groupTitle;"
+              [ngClass]="[sidebarItem.class]" class="menu-top" (click)="callToggleMenu($event, sidebarItem.submenu.length)">
+              <span class="hide-menu">{{sidebarItem.title}}
+              </span>
+              <span *ngIf="sidebarItem.badge !== '' " [ngClass]="[sidebarItem.badgeClass]">{{sidebarItem.badge}}</span>
+            </a>
+            <ul class="ml-menu sidebar-style" *ngIf="sidebarItem.submenu.length > 0">
+              <li *ngFor="let sidebarSubItem1 of sidebarItem.submenu"
+                [routerLinkActive]="sidebarSubItem1.submenu.length > 0 ? '' : 'active'" class="sidebar-style">
+                <a [routerLink]="sidebarSubItem1.submenu.length > 0 ? null : [sidebarSubItem1.path]"
+                  [ngClass]="[sidebarSubItem1.class]" (click)="callToggleMenu($event,sidebarSubItem1.submenu.length)">
+                  {{sidebarSubItem1.title}}
+                </a>
+                <ul class="ml-menu-2 sidebar-style" *ngIf="sidebarSubItem1.submenu.length > 0">
+                  <li *ngFor="let sidebarSubItem2 of sidebarSubItem1.submenu"
+                    [routerLinkActive]="sidebarSubItem2.submenu.length > 0 ? '' : 'active'" class="sidebar-style">
+                    <a [routerLink]="sidebarSubItem2.submenu.length > 0 ? null : [sidebarSubItem2.path]"
+                      [ngClass]="[sidebarSubItem2.class]" (click)="callToggleMenu($event,sidebarSubItem2.submenu.length)">
+                      {{sidebarSubItem2.title }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ng-container>
       </ul>
     </div>

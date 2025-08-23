@@ -1,0 +1,57 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout container */
+app-header {
+  height: 60px; /* Adjust the height of your header */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2; /* Make sure header is above the sidebar */
+}
+
+app-sidebar {
+  width: 250px; /* Sidebar width */
+  position: fixed;
+  top: 60px; /* Position the sidebar below the header */
+  left: 0;
+  bottom: 0;
+  z-index: 1; /* Sidebar will sit below the header */
+  overflow-y: auto;
+}
+
+app-footer {
+  height: 50px; /* Adjust footer height */
+  background: #333;
+  color: white;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+}
+
+main {
+  margin-left: 250px; /* Offset content to avoid overlap with the sidebar */
+  margin-top: 60px;   /* Offset content below the header */
+  padding: 20px;
+  min-height: calc(100vh - 110px); /* Ensure content area takes the remaining height */
+  flex: 1;
+  overflow: auto;
+}
+
+@media (max-width: 1024px) {
+  app-sidebar {
+    width: 200px; /* Adjust sidebar width on smaller screens */
+  }
+
+  main {
+    margin-left: 0; /* Adjust content position for smaller screens */
+  }
+}

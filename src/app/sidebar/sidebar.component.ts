@@ -6,8 +6,21 @@ import { SidebarValues } from '../model/sidebar-values.model';
 
 export const ROUTES: SidebarValues[] = [
   {
-    path: 'addTvSeries',
+    path: 'add-item',
     title: 'Add Tv Series',
+    iconType: 'feather',
+    icon: 'settings',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [],
+    disabled: false,
+    permission: 'finance_app'
+  },
+  {
+    path: 'viewAllTvSeries',
+    title: 'View All Tv Series',
     iconType: 'feather',
     icon: 'settings',
     class: '',
