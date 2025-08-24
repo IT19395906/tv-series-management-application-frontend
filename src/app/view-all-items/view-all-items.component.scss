@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+
+
+.minHeight {
+    @include mat.all-component-densities(-3);
+    @include mat.button-density(0);
+}

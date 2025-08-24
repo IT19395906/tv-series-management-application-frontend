@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class AddItemComponent {
   detailsForm!: FormGroup;
+  today: Date = new Date();
+  lastDate: Date = new Date(this.today.getFullYear() - 50, this.today.getMonth(), this.today.getDate());
   imgName: string = "No File Selected";
   categories: string[] = ['Action', 'Comedy', 'Drama', 'Thriller', 'Horror', 'Adventure', 'Crime',
     'Romance', 'Documentary', 'Sport', 'Mystery', 'Musical', 'History', 'Fantasy', 'Biography', 'Animation'];
