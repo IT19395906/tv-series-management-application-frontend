@@ -12,16 +12,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';            
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DatePipe } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeatherModule } from 'angular-feather';
 import { AddItemComponent } from './add-item/add-item.component';
+
 import {
   Facebook,
   Twitter,
@@ -90,9 +93,15 @@ const icons = {
     MatDatepickerModule,
     BrowserModule,
     AppRoutingModule,
+    ToastrModule.forRoot(
+      {
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+      }
+    ),
     FeatherModule.pick(icons),
   ],
-  providers: [],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
