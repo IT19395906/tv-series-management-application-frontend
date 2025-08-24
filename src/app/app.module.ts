@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DatePipe } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { MatRadioModule } from '@angular/material/radio';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeatherModule } from 'angular-feather';
@@ -45,6 +46,7 @@ import {
   Coffee,
   Users
 } from 'angular-feather/icons';
+import { ViewAllItemsComponent } from './view-all-items/view-all-items.component';
 
 const icons = {
   Facebook,
@@ -74,7 +76,8 @@ const icons = {
     FooterComponent,
     MainpageComponent,
     SidebarComponent,
-    AddItemComponent
+    AddItemComponent,
+    ViewAllItemsComponent
   ],
   imports: [
     MatMenuModule,
@@ -89,6 +92,7 @@ const icons = {
     MatAutocompleteModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatRadioModule,
     DatePipe,
     MatDatepickerModule,
     BrowserModule,

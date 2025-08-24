@@ -19,7 +19,7 @@ export const ROUTES: SidebarValues[] = [
     permission: 'finance_app'
   },
   {
-    path: 'viewAllTvSeries',
+    path: 'view',
     title: 'View All Tv Series',
     iconType: 'feather',
     icon: 'settings',

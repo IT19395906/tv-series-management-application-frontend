@@ -91,6 +91,14 @@
                         <input matInput type="text" maxlength="200" placeholder="Enter URL" formControlName="trailer" />
                     </mat-form-field>
 
+                    <div class="mt-1">
+                        <mat-label>Status</mat-label>
+                        <mat-radio-group formControlName="status" style="display: inline-flex; gap: 1em;">
+                            <mat-radio-button value="ongoing">ongoing</mat-radio-button>
+                            <mat-radio-button value="completed">completed</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
                 </div>
                 <!-- <div class="mb-3">
                     <label for="category" class="form-label"><b>Category</b></label>

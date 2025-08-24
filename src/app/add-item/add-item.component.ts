@@ -31,6 +31,7 @@ export class AddItemComponent {
   initDetailsForm(): void {
     this.detailsForm = this.fb.group({
       category: ['', Validators.required],
+      status: ['ongoing', Validators.required],
       title: ['', Validators.required],
       language: ['', Validators.required],
       description: ['', Validators.required],
@@ -38,7 +39,7 @@ export class AddItemComponent {
       seasons: [],
       episodes: [],
       img: ['', Validators.required],
-      trailer: []
+      trailer: [],
     })
   }
 
@@ -79,12 +80,7 @@ export class AddItemComponent {
     }).then(result => {
       if (result.isConfirmed) {
         this.toastr.success('Tv Series Uploaded Successfully', 'Success');
-        this.detailsForm.reset();
-        this.detailsForm.markAsPristine();
-        this.detailsForm.markAsUntouched();
-        this.detailsForm.clearAsyncValidators();
-        this.detailsForm.clearValidators();
-        this.detailsForm.updateValueAndValidity();
+        this.initDetailsForm();
       }
 
     })
