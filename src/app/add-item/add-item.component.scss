@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+.minHeight {
+    @include mat.all-component-densities(-3);
+    @include mat.button-density(0);
+}
+
+.file-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    input[type="file"] {
+        margin-top: 0.5rem;
+        padding: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.23);
+        border-radius: 4px;
+        font-family: inherit;
+    }
+}

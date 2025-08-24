@@ -15,6 +15,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';            
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { DatePipe } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeatherModule } from 'angular-feather';
 import { AddItemComponent } from './add-item/add-item.component';
@@ -80,6 +84,10 @@ const icons = {
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    DatePipe,
+    MatDatepickerModule,
     BrowserModule,
     AppRoutingModule,
     FeatherModule.pick(icons),
