@@ -5,3 +5,9 @@
     @include mat.all-component-densities(-3);
     @include mat.button-density(0);
 }
+
+.tbl-centered th,
+.tbl-centered td{
+    text-align: center;
+    vertical-align: middle;
+}

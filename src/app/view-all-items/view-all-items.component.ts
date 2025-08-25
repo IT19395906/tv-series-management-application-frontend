@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSort } from '@angular/material/sort';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-view-all-items',
@@ -14,6 +16,31 @@ export class ViewAllItemsComponent {
   lastDate: Date = new Date(this.today.getFullYear() - 50, this.today.getMonth(), this.today.getDate());
   categories: string[] = ['Action', 'Comedy', 'Drama', 'Thriller', 'Horror', 'Adventure', 'Crime',
     'Romance', 'Documentary', 'Sport', 'Mystery', 'Musical', 'History', 'Fantasy', 'Biography', 'Animation'];
+  valueChangesSubscription!: Subscription;
+  tvSeriesDataSource = [
+    {
+      id: "1", category: "jhsdochdsu", title: "khsdbckjd", addedDate: 'jkbewkjdbjwked', addedBy: 'hfdhfgh',
+      releasedDate: 'stdchf', status: 'yfcyghc', seasons: 4, episodes: 7, language: 'gvsvjvh'
+    },
+    {
+      id: "1", category: "jhsdochdsu", title: "khsdbckjd", addedDate: 'jkbewkjdbjwked', addedBy: 'hfdhfgh',
+      releasedDate: 'stdchf', status: 'yfcyghc', seasons: 4, episodes: 7, language: 'gvsvjvh'
+    }    
+  ];
+  displayedColumnsTable: string[] = [
+    'id',
+    'category',
+    'title',
+    'addedDate',
+    'addedBy',
+    'releasedDate',
+    'status',
+    'seasons',
+    'episodes',
+    'language',
+    'action'
+  ];
+  // @ViewChild(MatSort) sort: MatSort;
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
 
@@ -21,6 +48,10 @@ export class ViewAllItemsComponent {
 
   ngOnInit(): void {
     this.initSearchForm();
+  }
+
+  ngAfterViewInit() {
+    // this.tvSeriesDataSource.sort = this.sort;
   }
 
   initSearchForm(): void {
