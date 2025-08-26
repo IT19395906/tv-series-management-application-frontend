@@ -25,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSliderModule } from '@angular/material/slider';
+import { HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeatherModule } from 'angular-feather';
@@ -103,6 +104,7 @@ const icons = {
     MatSliderModule,
     DatePipe,
     MatDatepickerModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot(

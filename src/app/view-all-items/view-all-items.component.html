@@ -55,8 +55,10 @@
 
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="d-flex flex-wrap gap-2">
-                <button (click)="search()" mat-raised-button color="primary"> <i class="fa fa-search"></i>Search</button>
-                <button class="btn btn-danger rounded-pill" type="reset" value="Reset" (click)="clear()"><i class="fa fa-trash"></i> Clear</button>
+                <button (click)="search()" mat-raised-button color="primary"> <i
+                        class="fa fa-search"></i>Search</button>
+                <button class="btn btn-danger rounded-pill" type="reset" value="Reset" (click)="clear()"><i
+                        class="fa fa-trash"></i> Clear</button>
             </div>
         </div>
 
@@ -125,6 +127,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumnsTable"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsTable;"></tr>
 </table>
+<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="pageSizeOptions"
+    [showFirstLastButtons]="true"></mat-paginator>
 
 <mat-table [dataSource]="tvSeriesDataSource" matSort class="mat-elevation-z1">
 
