@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { ToastrService } from 'ngx-toastr';
 import { TvSeriesService } from '../tv-series.service';
 import { MatTableDataSource } from '@angular/material/table';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-all-items',
@@ -135,6 +136,31 @@ export class ViewAllItemsComponent {
     this.searchForm.reset();
   }
 
+
+
+  deleteRecord(element: any) {
+
+    Swal.fire({
+      title: "Are you sure want to delete ?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+    }).then(result => {
+      if (result.isConfirmed) {
+        const index = this.tvSeriesDataSource.data.indexOf(element);
+        if (index >= 0) {
+          // don't need to update table again with datasource because you change datasource.data
+          const o = this.tvSeriesDataSource.data.splice(index, 1);
+          this.tvSeriesDataSource._updateChangeSubscription();
+        }
+
+        // or this.tvSeriesDataSource.data = this.tvSeriesDataSource.data.filter(item => item !== element);
+      }
+    })
+  }
 
   disableFieldsOnChange(): void {
     const controls = this.searchForm.controls;
