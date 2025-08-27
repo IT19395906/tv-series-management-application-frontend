@@ -4,9 +4,9 @@ export interface SubmitDto {
     title: string;
     language: string;
     description: string;
-    releasedDate: Date;
+    releasedDate: string;
     seasons: number;
     episodes: number;
-    img: Blob;
+    img: File;
     trailer: string;
 }

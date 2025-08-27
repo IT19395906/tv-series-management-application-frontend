@@ -16,6 +16,7 @@ export class AddItemComponent {
   today: Date = new Date();
   lastDate: Date = new Date(this.today.getFullYear() - 50, this.today.getMonth(), this.today.getDate());
   imgName: string = "No File Selected";
+  image!: File;
   categories: string[] = ['Action', 'Comedy', 'Drama', 'Thriller', 'Horror', 'Adventure', 'Crime',
     'Romance', 'Documentary', 'Sport', 'Mystery', 'Musical', 'History', 'Fantasy', 'Biography', 'Animation'];
   languages: string[] = ['English', 'Hindi', 'Spanish', 'French', 'German', 'Chinese', 'Japanese',
@@ -43,7 +44,7 @@ export class AddItemComponent {
       releasedDate: ['', Validators.required],
       seasons: [],
       episodes: [],
-      img: ['', Validators.required],
+      img: [null, Validators.required],
       trailer: [],
     })
   }
@@ -60,9 +61,25 @@ export class AddItemComponent {
   }
 
   onImageSelected(event: any) {
-    const image = event.target.files[0];
-    this.imgName = image.name;
-    this.detailsForm.get('img')?.setValue(image);
+    this.image = event.target.files[0];
+    // File extends Blob /Blob has size, type /File has name, lastModified
+
+    if (!this.image.type.startsWith('image/')) {
+      this.detailsForm.get('img')?.setValue(null);
+      this.imgName = '';
+      this.toastr.error('Invalid image format', 'Error');
+      return;
+    }
+
+    if (this.image.size > 30 * 1024 * 1024) {
+      this.detailsForm.get('img')?.setValue(null);
+      this.imgName = '';
+      this.toastr.error('Image size is too large', 'Error');
+      return;
+    }
+
+    this.imgName = this.image.name;
+    this.detailsForm.get('img')?.setValue(this.image);
     this.detailsForm.get('img')?.markAsTouched();
   }
 
@@ -84,7 +101,20 @@ export class AddItemComponent {
 
     }).then(result => {
       if (result.isConfirmed) {
-        this.tvSeriesService.addTvSeriesData(this.detailsForm.value).subscribe({
+
+        const submitDto: SubmitDto = {
+          category: this.detailsForm.get('category')?.value,
+          status: this.detailsForm.get('status')?.value,
+          title: this.detailsForm.get('title')?.value,
+          language: this.detailsForm.get('language')?.value,
+          description: this.detailsForm.get('description')?.value,
+          releasedDate: this.detailsForm.get('releasedDate')?.value,
+          seasons: this.detailsForm.get('seasons')?.value,
+          episodes: this.detailsForm.get('episodes')?.value,
+          img: this.image, // this.detailsForm.get('img')?.value, also ok
+          trailer: this.detailsForm.get('trailer')?.value,
+        };
+        this.tvSeriesService.addTvSeriesData(submitDto).subscribe({
           next: (response) => { },
           error: (error) => { },
           complete: () => { }

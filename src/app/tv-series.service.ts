@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SubmitDto } from './model/dto.model';
 
 export const environment = {
   production: false,
@@ -15,7 +16,7 @@ export class TvSeriesService {
 
   private readonly apiUrl = `${environment.apiBaseUrl}/api/`;
 
-  addTvSeriesData(submitDto: any): Observable<any> {
+  addTvSeriesData(submitDto: SubmitDto): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'add', submitDto);
   }
   
