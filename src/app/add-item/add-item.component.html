@@ -25,6 +25,17 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="reduce-width mt-1">
+                        <mat-label>Quality</mat-label>
+                        <mat-select formControlName="quality">
+                            <mat-option value="480p">480p (SD)</mat-option>
+                            <mat-option value="720p">720p (HD)</mat-option>
+                            <mat-option value="1080p">1080p (Full HD)</mat-option>
+                            <mat-option value="2k">2k</mat-option>
+                            <mat-option value="4k">4k</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="reduce-width mt-1">
                         <mat-label>Language</mat-label>
                         <input matInput placeholder="Search Language" [matAutocomplete]="auto" required
                             (input)="onLanguageSearch($event)" formControlName="language" />

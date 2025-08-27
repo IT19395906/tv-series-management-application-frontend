@@ -3,6 +3,7 @@ export interface SubmitDto {
     status: string;
     title: string;
     language: string;
+    quality: string;
     description: string;
     releasedDate: string;
     seasons: number;

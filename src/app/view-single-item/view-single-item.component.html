@@ -1,1 +1,204 @@
-<p>view-single-item works!</p>
+<mat-dialog-content>
+    <div class="container mt-2 mb-2">
+        <div class="card rounded shadow">
+            <div class="card-header text-center bg-primary text-white">
+                <h4>Update {{this.detailsForm.controls['title'].value}} TV Series</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="detailsForm">
+
+                    <div class="row minHeight">
+                        <mat-form-field appearance="outline" class="reduce-width">
+                            <mat-label>Category</mat-label>
+                            <mat-select formControlName="category" required>
+                                <mat-option *ngFor="let category of categories.sort()"
+                                    [value]="category">{{category}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="detailsForm.get('category')?.hasError('required')">Category is
+                                required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Title</mat-label>
+                            <input matInput type="text" maxlength="50" placeholder="Enter Title" formControlName="title"
+                                required />
+                            <mat-error *ngIf="detailsForm.get('title')?.hasError('required')">Title is
+                                required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Quality</mat-label>
+                            <mat-select formControlName="quality">
+                                <mat-option value="480p">480p (SD)</mat-option>
+                                <mat-option value="720p">720p (HD)</mat-option>
+                                <mat-option value="1080p">1080p (Full HD)</mat-option>
+                                <mat-option value="2k">2k</mat-option>
+                                <mat-option value="4k">4k</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Language</mat-label>
+                            <input matInput placeholder="Search Language" [matAutocomplete]="auto" required
+                                (input)="onLanguageSearch($event)" formControlName="language" />
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">
+                                <mat-option *ngFor="let language of filteredLanguages" [value]="language">
+                                    {{ language }}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="detailsForm.get('language')?.hasError('required')">Language is
+                                required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput type="text" rows="4" maxlength="500" placeholder="Enter Description"
+                                formControlName="description" required></textarea>
+                            <mat-error *ngIf="detailsForm.get('description')?.hasError('required')">Description is
+                                required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Release Date</mat-label>
+                            <input matInput [matDatepicker]="releasedDatePicker" [min]="lastDate" [max]="today"
+                                placeholder="Select Released Date" (click)="releasedDatePicker.open()"
+                                formControlName="releasedDate" required readonly />
+                            <mat-datepicker-toggle [for]="releasedDatePicker" matIconSuffix></mat-datepicker-toggle>
+                            <mat-datepicker #releasedDatePicker></mat-datepicker>
+                            <mat-error *ngIf="detailsForm.get('releasedDate')?.hasError('required')">Released date is
+                                required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Total Number of Seasons</mat-label>
+                            <input matInput type="number" min="1" max="50" placeholder="Enter Total Number of Seasons"
+                                formControlName="seasons" />
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Total Number of Episodes</mat-label>
+                            <input matInput type="number" min="1" max="10000"
+                                placeholder="Enter Total Number of Episodes" formControlName="episodes" />
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Image</mat-label>
+                            <input matInput [value]="imgName" placeholder="Upload Image" readonly required
+                                formControlName="img" (click)="fileInput.click()">
+                            <button mat-icon-button matSuffix (click)="fileInput.click()">
+                                <mat-icon>upload</mat-icon>
+                            </button>
+                            <mat-error *ngIf="detailsForm.get('img')?.hasError('required')">Image is
+                                required</mat-error>
+                        </mat-form-field>
+
+                        <input type="file" #fileInput accept="image/*" (change)="onImageSelected($event)" hidden>
+
+                        <mat-form-field appearance="outline" class="reduce-width mt-1">
+                            <mat-label>Youtube Trailer</mat-label>
+                            <input matInput type="text" maxlength="200" placeholder="Enter URL"
+                                formControlName="trailer" />
+                        </mat-form-field>
+
+                        <div class="mt-1">
+                            <mat-label>Status</mat-label>
+                            <mat-radio-group formControlName="status" style="display: inline-flex; gap: 1em;">
+                                <mat-radio-button value="ongoing">ongoing</mat-radio-button>
+                                <mat-radio-button value="completed">completed</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                    </div>
+                    <!-- <div class="mb-3">
+                    <label for="category" class="form-label"><b>Category</b></label>
+                    <select id="category" class="form-select" formControlName="category" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="Action">Action</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Horror">Horror</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label"><b>Title</b></label>
+                    <input type="text" id="title" class="form-control" formControlName="title" required maxlength="50"
+                        placeholder="Enter TV Series title">
+                </div>
+
+                <div class="mb-3">
+                    <label for="language" class="form-label"><b>Language</b></label>
+                    <select id="language" class="form-select" formControlName="language" required>
+                        <option value="" disabled selected>Select a language</option>
+                        <option value="English (US)">English (US)</option>
+                        <option value="Sinhala">Sinhala</option>
+                        <option value="German">German</option>
+                        <option value="Hindi">Hindi</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" class="form-control" formControlName="description" style="resize: none;"
+                        rows="4" placeholder="Enter a brief description of the TV Series"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="releaseDate" class="form-label">Release Date</label>
+                    <input type="date" id="releaseDate" class="form-control" formControlName="releaseDate" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="seasons" class="form-label">Total Number of Seasons</label>
+                    <input type="number" id="seasons" class="form-control" formControlName="seasons"  min="1"
+                        max="50" placeholder="Enter Total Number of Seasons">
+                </div>
+
+                <div class="mb-3">
+                    <label for="episodes" class="form-label">Total Number of episodes</label>
+                    <input type="number" id="episodes" class="form-control" formControlName="episodes" min="1"
+                        max="10000" placeholder="Enter Total Number of Episodes">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" id="image" class="form-control" formControlName="image" required
+                        accept="image/*">
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Ongoing or not</label>
+                    <div class="form-check">
+                        <input type="radio" id="ongoing" name="status" class="form-check-input" formControlName="status"
+                            value="Ongoing" required>
+                        <label for="ongoing" class="form-check-label">Ongoing</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="complete" name="status" class="form-check-input"
+                            formControlName="status" value="Complete">
+                        <label for="complete" class="form-check-label">Complete</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="episodes" class="form-label">Trailer URL</label>
+                    <input type="number" id="episodes" class="form-control" formControlName="episodes" required min="1"
+                        max="50" placeholder="Enter number of episodes">
+                </div>
+
+                <div class="mb-3">
+                    <label for="episodes" class="form-label">File</label>
+                    <input type="number" id="episodes" class="form-control" formControlName="episodes" required min="1"
+                        max="50" placeholder="Enter number of episodes">
+                </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button style="background-color: rgb(13, 110, 253); color: white;"
+        (click)="onUpdate()">Update</button>
+    <button mat-raised-button style="background-color: rgb(220, 53, 69); color: white;" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
