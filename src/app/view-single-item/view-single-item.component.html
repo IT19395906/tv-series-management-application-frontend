@@ -81,6 +81,10 @@
                                 placeholder="Enter Total Number of Episodes" formControlName="episodes" />
                         </mat-form-field>
 
+                        <div *ngIf="updatedImagePreview || detailsForm.get('img')?.value" class="text-center mb-1">
+                            <img [src]="updatedImagePreview ? updatedImagePreview : detailsForm.get('img')?.value" alt="original" class="preview-img" />
+                        </div>
+
                         <mat-form-field appearance="outline" class="reduce-width mt-1">
                             <mat-label>Image</mat-label>
                             <input matInput [value]="imgName" placeholder="Upload Image" readonly required

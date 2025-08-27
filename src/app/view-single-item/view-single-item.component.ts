@@ -19,6 +19,7 @@ export class ViewSingleItemComponent implements OnInit {
   lastDate: Date = new Date(this.today.getFullYear() - 50, this.today.getMonth(), this.today.getDate());
   imgName: string = "No File Selected";
   image!: File;
+  updatedImagePreview: string | null = null;
   categories: string[] = ['Action', 'Comedy', 'Drama', 'Thriller', 'Horror', 'Adventure', 'Crime',
     'Romance', 'Documentary', 'Sport', 'Mystery', 'Musical', 'History', 'Fantasy', 'Biography', 'Animation'];
   languages: string[] = ['English', 'Hindi', 'Spanish', 'French', 'German', 'Chinese', 'Japanese',
@@ -73,6 +74,7 @@ export class ViewSingleItemComponent implements OnInit {
     if (!this.image.type.startsWith('image/')) {
       this.detailsForm.get('img')?.setValue(null);
       this.imgName = '';
+      this.updatedImagePreview = null;
       this.toastr.error('Invalid image format', 'Error');
       return;
     }
@@ -80,6 +82,7 @@ export class ViewSingleItemComponent implements OnInit {
     if (this.image.size > 30 * 1024 * 1024) {
       this.detailsForm.get('img')?.setValue(null);
       this.imgName = '';
+      this.updatedImagePreview = null;
       this.toastr.error('Image size is too large', 'Error');
       return;
     }
@@ -87,6 +90,7 @@ export class ViewSingleItemComponent implements OnInit {
     this.imgName = this.image.name;
     this.detailsForm.get('img')?.setValue(this.image);
     this.detailsForm.get('img')?.markAsTouched();
+    this.updatedImagePreview = URL.createObjectURL(this.image)
   }
 
   onUpdate(): void {
