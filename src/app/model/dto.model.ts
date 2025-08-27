@@ -10,3 +10,13 @@ export interface SubmitDto {
     img: File;
     trailer: string;
 }
+
+export interface SearchDto {
+    category: string;
+    title: string;
+    releasedDateFrom: string;
+    releasedDateTo: string;
+    addedDateFrom: string;
+    addedDateTo: string;
+    quality: string;
+}

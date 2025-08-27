@@ -26,6 +26,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeatherModule } from 'angular-feather';
@@ -52,6 +53,7 @@ import {
   Users
 } from 'angular-feather/icons';
 import { ViewAllItemsComponent } from './view-all-items/view-all-items.component';
+import { ViewSingleItemComponent } from './view-single-item/view-single-item.component';
 
 const icons = {
   Facebook,
@@ -82,7 +84,8 @@ const icons = {
     MainpageComponent,
     SidebarComponent,
     AddItemComponent,
-    ViewAllItemsComponent
+    ViewAllItemsComponent,
+    ViewSingleItemComponent
   ],
   imports: [
     MatMenuModule,
@@ -105,6 +108,7 @@ const icons = {
     DatePipe,
     MatDatepickerModule,
     HttpClientModule,
+    MatDialogModule,
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot(

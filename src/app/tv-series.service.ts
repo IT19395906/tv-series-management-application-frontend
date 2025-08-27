@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SubmitDto } from './model/dto.model';
+import { SearchDto, SubmitDto } from './model/dto.model';
 
 export const environment = {
   production: false,
@@ -20,7 +20,7 @@ export class TvSeriesService {
     return this.http.post<any>(this.apiUrl + 'add', submitDto);
   }
   
-  getTvSeriesBySearch(searchDto: any): Observable<any> {
+  getTvSeriesBySearch(searchDto: SearchDto): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'getBySearch', searchDto);
   }
 }

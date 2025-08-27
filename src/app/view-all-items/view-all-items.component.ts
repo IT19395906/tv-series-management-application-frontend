@@ -6,6 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 import { TvSeriesService } from '../tv-series.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewSingleItemComponent } from '../view-single-item/view-single-item.component';
+import { SearchDto } from '../model/dto.model';
 
 @Component({
   selector: 'app-view-all-items',
@@ -66,6 +69,7 @@ export class ViewAllItemsComponent {
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
     private tvSeriesService: TvSeriesService,
+    private dialog: MatDialog,
 
   ) { }
 
@@ -84,6 +88,7 @@ export class ViewAllItemsComponent {
       title: [''],
       fromDate: [''],
       toDate: [''],
+      quality: [''],
       addedDate: this.fb.group({
         addedDateFrom: [''],
         addedDateTo: [''],
@@ -100,9 +105,20 @@ export class ViewAllItemsComponent {
     const addedDate = this.searchForm.controls["addedDate"] as FormGroup;
     const addedDateFrom = addedDate.controls['addedDateFrom'].value;
     const addedDateTo = addedDate.controls['addedDateTo'].value;
+    const quality = this.searchForm.controls['quality'].value;
 
-    const searchDto = { category, title, fromDate, toDate, addedDateFrom, addedDateTo }
-    const hasAnyFilter = !!category || !!title || !!fromDate || !!toDate || !!addedDateFrom || !!addedDateTo;
+    // const searchDto = { category, title, fromDate, toDate, addedDateFrom, addedDateTo }
+    const searchDto: SearchDto = {
+      category: category,
+      title: title,
+      releasedDateFrom: fromDate,
+      releasedDateTo: toDate,
+      addedDateFrom: addedDateFrom,
+      addedDateTo: addedDateTo,
+      quality: quality
+    };
+
+    const hasAnyFilter = !!category || !!title || !!fromDate || !!toDate || !!addedDateFrom || !!addedDateTo || !!quality;
 
     if (!hasAnyFilter) {
       this.toastr.warning('Please fill at least one filter', 'Warning');
@@ -136,7 +152,11 @@ export class ViewAllItemsComponent {
     this.searchForm.reset();
   }
 
-
+  editRecord(element: any) {
+    this.dialog.open(ViewSingleItemComponent,
+      { data: element }
+    );
+  }
 
   deleteRecord(element: any) {
 
