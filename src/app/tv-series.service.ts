@@ -15,6 +15,10 @@ export class TvSeriesService {
 
   private readonly apiUrl = `${environment.apiBaseUrl}/api/`;
 
+  addTvSeriesData(submitDto: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'add', submitDto);
+  }
+  
   getTvSeriesBySearch(searchDto: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'getBySearch', searchDto);
   }

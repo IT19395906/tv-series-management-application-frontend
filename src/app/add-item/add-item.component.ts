@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { TvSeriesService } from '../tv-series.service';
+import { SubmitDto } from '../model/dto.model';
 
 @Component({
   selector: 'app-add-item',
@@ -23,6 +25,7 @@ export class AddItemComponent {
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
+    private tvSeriesService: TvSeriesService,
 
   ) { }
 
@@ -81,6 +84,11 @@ export class AddItemComponent {
 
     }).then(result => {
       if (result.isConfirmed) {
+        this.tvSeriesService.addTvSeriesData(this.detailsForm.value).subscribe({
+          next: (response) => { },
+          error: (error) => { },
+          complete: () => { }
+        })
         this.toastr.success('Tv Series Uploaded Successfully', 'Success');
         this.initDetailsForm();
       }
