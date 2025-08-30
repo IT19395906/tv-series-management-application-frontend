@@ -5,7 +5,7 @@ import { SearchDto, SubmitDto } from './model/dto.model';
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://jsonplaceholder.typicode.com/posts'
+  apiBaseUrl: 'http://localhost:8080'
 };
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,21 @@ export class TvSeriesService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly apiUrl = `${environment.apiBaseUrl}/api/`;
+  private readonly apiUrl = `${environment.apiBaseUrl}/api/tvseries/`;
 
   addTvSeriesData(submitDto: SubmitDto): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'add', submitDto);
   }
-  
+
   getTvSeriesBySearch(searchDto: SearchDto): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'getBySearch', searchDto);
+  }
+
+  getAllCategories(): Observable<any> {
+    return this.http.get<string[]>(this.apiUrl + 'categories');
+  }
+
+  getAllLanguages(): Observable<any> {
+    return this.http.get<string[]>(this.apiUrl + 'languages');
   }
 }

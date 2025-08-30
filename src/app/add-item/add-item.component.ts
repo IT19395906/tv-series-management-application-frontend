@@ -17,12 +17,9 @@ export class AddItemComponent {
   lastDate: Date = new Date(this.today.getFullYear() - 50, this.today.getMonth(), this.today.getDate());
   imgName: string = "No File Selected";
   image!: File;
-  categories: string[] = ['Action', 'Comedy', 'Drama', 'Thriller', 'Horror', 'Adventure', 'Crime',
-    'Romance', 'Documentary', 'Sport', 'Mystery', 'Musical', 'History', 'Fantasy', 'Biography', 'Animation'];
-  languages: string[] = ['English', 'Hindi', 'Spanish', 'French', 'German', 'Chinese', 'Japanese',
-    'Korean', 'Arabic', 'Portuguese', 'Russian', 'Italian', 'Turkish', 'Dutch'
-  ];
-  filteredLanguages: string[] = [...this.languages];
+  categories: string[] = [];
+  languages: string[] = [];
+  filteredLanguages: string[] = [];
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
@@ -32,6 +29,8 @@ export class AddItemComponent {
 
   ngOnInit(): void {
     this.initDetailsForm();
+    this.loadCategories();
+    this.loadLanguages();
   }
 
   initDetailsForm(): void {
@@ -47,6 +46,29 @@ export class AddItemComponent {
       episodes: [],
       img: [null, Validators.required],
       trailer: [],
+    })
+  }
+
+  loadCategories() {
+    this.tvSeriesService.getAllCategories().subscribe({
+      next: (response) => {
+        this.categories = response
+      },
+      error: (error) => {
+        this.toastr.error('Retrieve categories failed', 'Error');
+      }
+    })
+  }
+
+  loadLanguages() {
+    this.tvSeriesService.getAllLanguages().subscribe({
+      next: (response) => {
+        this.languages = response;
+        this.filteredLanguages = [...this.languages];
+      },
+      error: (error) => {
+        this.toastr.error('Retrieve languages failed', 'Error');
+      }
     })
   }
 
@@ -117,12 +139,15 @@ export class AddItemComponent {
           trailer: this.detailsForm.get('trailer')?.value,
         };
         this.tvSeriesService.addTvSeriesData(submitDto).subscribe({
-          next: (response) => { },
-          error: (error) => { },
+          next: (response) => {
+            this.toastr.success('Tv Series Uploaded Successfully', 'Success');
+            this.initDetailsForm();
+          },
+          error: (error) => {
+            this.toastr.error('Tv Series Upload Failed', 'Error');
+          },
           complete: () => { }
         })
-        this.toastr.success('Tv Series Uploaded Successfully', 'Success');
-        this.initDetailsForm();
       }
 
     })
