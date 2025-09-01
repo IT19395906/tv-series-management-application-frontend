@@ -24,6 +24,10 @@ export class TvSeriesService {
     return this.http.post<any>(this.apiUrl + 'getBySearch', searchDto);
   }
 
+  deleteTvSeries(id: number): Observable<any> {
+    return this.http.delete<any>(this.apiUrl + 'delete/' + id);
+  }
+
   getAllCategories(): Observable<any> {
     return this.http.get<string[]>(this.apiUrl + 'categories');
   }

@@ -81,7 +81,11 @@
 </form>
 <table mat-table [dataSource]="tvSeriesDataSource" matSort class="table table-hover tbl-centered">
     <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <th mat-header-cell *matHeaderCellDef>No</th>
+        <td mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+    </ng-container>
+    <ng-container matColumnDef="tvSeriesId">
+        <th mat-header-cell *matHeaderCellDef>Tv Series Id</th>
         <td mat-cell *matCellDef="let element">{{element.id}}</td>
     </ng-container>
     <ng-container matColumnDef="category">
@@ -146,9 +150,14 @@
 
 <mat-table [dataSource]="tvSeriesDataSource" matSort class="mat-elevation-z1 mt-5">
 
-    <!-- ID Column -->
     <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+         <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index">{{i+1}}</mat-cell>
+    </ng-container>
+    
+    <!-- ID Column -->
+    <ng-container matColumnDef="tvSeriesId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 

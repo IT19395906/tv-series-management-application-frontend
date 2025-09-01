@@ -52,6 +52,7 @@ export class ViewAllItemsComponent {
 
   displayedColumnsTable: string[] = [
     'id',
+    'tvSeriesId',
     'category',
     'title',
     'addedDate',
@@ -174,13 +175,23 @@ export class ViewAllItemsComponent {
     }).then(result => {
       if (result.isConfirmed) {
         const index = this.tvSeriesDataSource.data.indexOf(element);
-        if (index >= 0) {
-          // don't need to update table again with datasource because you change datasource.data
-          const o = this.tvSeriesDataSource.data.splice(index, 1);
-          this.tvSeriesDataSource._updateChangeSubscription();
-        }
-
-        // or this.tvSeriesDataSource.data = this.tvSeriesDataSource.data.filter(item => item !== element);
+        this.tvSeriesService.deleteTvSeries(element.id).subscribe({
+          next: (response) => {
+            if (response == "Successfully Deleted Tv series") {
+              if (index >= 0) {
+                // don't need to update table again with datasource because you change datasource.data
+                const deletedObj = this.tvSeriesDataSource.data.splice(index, 1);
+                this.tvSeriesDataSource._updateChangeSubscription();
+                this.toastr.success(`Tv Series successfully deleted Id ${deletedObj[0].id}`, 'Success')
+              }
+              // or this.tvSeriesDataSource.data = this.tvSeriesDataSource.data.filter(item => item !== element);
+            }
+          },
+          error: (error) => {
+            this.toastr.error('Delete tv series failed', 'Error');
+          },
+          complete: () => { }
+        });
       }
     })
   }
