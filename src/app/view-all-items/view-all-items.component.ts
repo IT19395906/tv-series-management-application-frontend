@@ -101,8 +101,8 @@ export class ViewAllItemsComponent {
   search() {
     const category = this.searchForm.controls["category"].value;
     const title = this.searchForm.controls["title"].value?.trim();
-    const fromDate = this.searchForm.controls["fromDate"].value;
-    const toDate = this.searchForm.controls["toDate"].value;
+    const fromDate = this.searchForm.controls["fromDate"].value.toLocaleDateString("en-CA");
+    const toDate = this.searchForm.controls["toDate"].value.toLocaleDateString("en-CA");
     const addedDate = this.searchForm.controls["addedDate"] as FormGroup;
     const addedDateFrom = addedDate.controls['addedDateFrom'].value;
     const addedDateTo = addedDate.controls['addedDateTo'].value;

@@ -5,7 +5,7 @@ export interface SubmitDto {
     language: string;
     quality: string;
     description: string;
-    releasedDate: string;
+    releasedDate: Date;
     seasons: number;
     episodes: number;
     img: File;
@@ -15,8 +15,8 @@ export interface SubmitDto {
 export interface SearchDto {
     category: string;
     title: string;
-    releasedDateFrom: string;
-    releasedDateTo: string;
+    releasedDateFrom: Date;
+    releasedDateTo: Date;
     addedDateFrom: string;
     addedDateTo: string;
     quality: string;

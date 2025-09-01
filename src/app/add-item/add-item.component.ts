@@ -132,7 +132,7 @@ export class AddItemComponent {
           quality: this.detailsForm.get('quality')?.value,
           language: this.detailsForm.get('language')?.value,
           description: this.detailsForm.get('description')?.value,
-          releasedDate: this.detailsForm.get('releasedDate')?.value,
+          releasedDate: this.detailsForm.get('releasedDate')?.value.toLocaleDateString("en-CA"),
           seasons: this.detailsForm.get('seasons')?.value,
           episodes: this.detailsForm.get('episodes')?.value,
           img: this.image, // this.detailsForm.get('img')?.value, also ok
@@ -140,8 +140,10 @@ export class AddItemComponent {
         };
         this.tvSeriesService.addTvSeriesData(submitDto).subscribe({
           next: (response) => {
-            this.toastr.success('Tv Series Uploaded Successfully', 'Success');
-            this.initDetailsForm();
+            if (response.message == "Tv Series Uploaded Successfully") {
+              this.toastr.success('Tv Series Uploaded Successfully', 'Success');
+              this.initDetailsForm();
+            }
           },
           error: (error) => {
             this.toastr.error('Tv Series Upload Failed', 'Error');
