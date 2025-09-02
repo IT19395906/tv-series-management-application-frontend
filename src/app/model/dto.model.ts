@@ -15,8 +15,8 @@ export interface SubmitDto {
 export interface SearchDto {
     category: string;
     title: string;
-    releasedDateFrom: Date;
-    releasedDateTo: Date;
+    releasedDateFrom: string | null;
+    releasedDateTo: string | null;
     addedDateFrom: string;
     addedDateTo: string;
     quality: string;

@@ -101,8 +101,12 @@ export class ViewAllItemsComponent {
   search() {
     const category = this.searchForm.controls["category"].value;
     const title = this.searchForm.controls["title"].value?.trim();
-    const fromDate = this.searchForm.controls["fromDate"].value.toLocaleDateString("en-CA");
-    const toDate = this.searchForm.controls["toDate"].value.toLocaleDateString("en-CA");
+    const fromDate = this.searchForm.controls["fromDate"].value instanceof Date
+      ? this.searchForm.controls["fromDate"].value.toLocaleDateString("en-CA")
+      : null;
+    const toDate = this.searchForm.controls["toDate"].value instanceof Date
+      ? this.searchForm.controls["toDate"].value.toLocaleDateString("en-CA")
+      : null;
     const addedDate = this.searchForm.controls["addedDate"] as FormGroup;
     const addedDateFrom = addedDate.controls['addedDateFrom'].value;
     const addedDateTo = addedDate.controls['addedDateTo'].value;
@@ -138,7 +142,9 @@ export class ViewAllItemsComponent {
         }
       },
       error: (error) => {
-        this.toastr.error(error.message, 'Error');
+        const errorMessage = error?.error?.message || error.message || 'Search Failed';
+        this.toastr.error(errorMessage, 'Error');
+        this.tvSeriesDataSource.data = [];
       },
       complete: () => { }
     })
