@@ -26,6 +26,7 @@
                     readonly />
                 <mat-datepicker-toggle [for]="fromDatePicker" matIconSuffix></mat-datepicker-toggle>
                 <mat-datepicker #fromDatePicker></mat-datepicker>
+                            <mat-error *ngIf="searchForm.get('fromDate')?.hasError('incompleteRange')">from date required</mat-error>
             </mat-form-field>
         </div>
 
@@ -36,6 +37,7 @@
                     placeholder="select to date" (click)="toDatePicker.open()" formControlName="toDate" readonly />
                 <mat-datepicker-toggle [for]="toDatePicker" matIconSuffix></mat-datepicker-toggle>
                 <mat-datepicker #toDatePicker></mat-datepicker>
+                            <mat-error *ngIf="searchForm.get('toDate')?.hasError('incompleteRange')">to date required</mat-error>
             </mat-form-field>
         </div>
 

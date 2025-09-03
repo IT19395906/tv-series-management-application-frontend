@@ -95,11 +95,21 @@ export class ViewAllItemsComponent {
         addedDateTo: [''],
       })
     });
-    this.disableFieldsOnChange();
+    this.searchForm.valueChanges.subscribe(() => {
+      this.searchForm.get("fromDate")?.setErrors(null);
+      this.searchForm.get("toDate")?.setErrors(null);
+      if (this.searchForm.get("fromDate")?.value && !this.searchForm.get("toDate")?.value) {
+        this.searchForm.get("toDate")?.setErrors({ incompleteRange: true }); return;
+      }
+
+      if (!this.searchForm.get("fromDate")?.value && this.searchForm.get("toDate")?.value) {
+        this.searchForm.get("fromDate")?.setErrors({ incompleteRange: true }); return;
+      }
+    });
     this.addedDateForm.valueChanges.subscribe(() => {
       this.addedDateForm.setErrors(null);
       if (!this.addedDateForm.get('addedDateFrom')?.value || !this.addedDateForm.get('addedDateTo')?.value) {
-        this.addedDateForm.setErrors({ incompleteRange: true });
+        this.addedDateForm.setErrors({ incompleteRange: true }); return;
       }
     });
   }
@@ -163,6 +173,10 @@ export class ViewAllItemsComponent {
 
   clear() {
     this.searchForm.reset();
+    this.searchForm.markAsPristine();
+    this.searchForm.markAsUntouched();
+    this.searchForm.updateValueAndValidity();
+    this.tvSeriesDataSource.data = [];
   }
 
   editRecord(element: any) {
@@ -206,28 +220,5 @@ export class ViewAllItemsComponent {
         });
       }
     })
-  }
-
-  disableFieldsOnChange(): void {
-    const controls = this.searchForm.controls;
-
-    Object.keys(controls).forEach((key) => {
-      controls[key].valueChanges.subscribe((value) => {
-        if (value) {
-          Object.keys(controls).forEach((otherKey) => {
-            if (otherKey !== key) {
-              controls[otherKey].disable({ emitEvent: false });
-            }
-          });
-        } else {
-          const anyOtherFilled = Object.keys(controls).some((k) => k !== key && !!controls[k].value);
-          if (!anyOtherFilled) {
-            Object.keys(controls).forEach((k) => {
-              controls[k].enable({ emitEvent: false });
-            });
-          }
-        }
-      });
-    });
   }
 }

@@ -54,6 +54,7 @@ import {
 } from 'angular-feather/icons';
 import { ViewAllItemsComponent } from './view-all-items/view-all-items.component';
 import { ViewSingleItemComponent } from './view-single-item/view-single-item.component';
+import { HomeComponent } from './home/home.component';
 
 const icons = {
   Facebook,
@@ -85,7 +86,8 @@ const icons = {
     SidebarComponent,
     AddItemComponent,
     ViewAllItemsComponent,
-    ViewSingleItemComponent
+    ViewSingleItemComponent,
+    HomeComponent
   ],
   imports: [
     MatMenuModule,

@@ -35,4 +35,8 @@ export class TvSeriesService {
   getAllLanguages(): Observable<any> {
     return this.http.get<string[]>(this.apiUrl + 'languages');
   }
+
+  getAllTvSeries(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'getAll');
+  }
 }
