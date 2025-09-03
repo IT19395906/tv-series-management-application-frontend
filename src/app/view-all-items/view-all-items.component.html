@@ -51,6 +51,7 @@
                 <mat-datepicker-toggle matIconSuffix [for]="addedDatePicker"></mat-datepicker-toggle>
                 <mat-date-range-picker #addedDatePicker></mat-date-range-picker>
             </mat-form-field>
+            <mat-error *ngIf="addedDateForm.hasError('incompleteRange')" style="font-size: smaller; margin-top: -1rem;">start date and end date required</mat-error>
         </div>
 
         <div class="col-lg-2 col-md-6 col-sm-12">
@@ -151,13 +152,13 @@
 <mat-table [dataSource]="tvSeriesDataSource" matSort class="mat-elevation-z1 mt-5">
 
     <ng-container matColumnDef="id">
-         <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
         <mat-cell *matCellDef="let element; let i = index">{{i+1}}</mat-cell>
     </ng-container>
-    
+
     <!-- ID Column -->
     <ng-container matColumnDef="tvSeriesId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>ID </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
@@ -176,7 +177,7 @@
     <!-- Added Date Column -->
     <ng-container matColumnDef="addedDate">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Added Date </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.addedDate}} </mat-cell>
+        <mat-cell *matCellDef="let element" style="white-space: nowrap;"> {{element.addedDate}} </mat-cell>
     </ng-container>
 
     <!-- Added By Column -->
@@ -188,7 +189,7 @@
     <!-- Released Date Column -->
     <ng-container matColumnDef="releasedDate">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Released Date </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.releasedDate}} </mat-cell>
+        <mat-cell *matCellDef="let element" style="white-space: nowrap;"> {{element.releasedDate}} </mat-cell>
     </ng-container>
 
     <!-- Status Column -->

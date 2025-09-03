@@ -96,6 +96,12 @@ export class ViewAllItemsComponent {
       })
     });
     this.disableFieldsOnChange();
+    this.addedDateForm.valueChanges.subscribe(() => {
+      this.addedDateForm.setErrors(null);
+      if (!this.addedDateForm.get('addedDateFrom')?.value || !this.addedDateForm.get('addedDateTo')?.value) {
+        this.addedDateForm.setErrors({ incompleteRange: true });
+      }
+    });
   }
 
   search() {
