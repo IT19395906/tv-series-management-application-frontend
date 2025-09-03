@@ -3,8 +3,7 @@
     <div class="row g-5">
         <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let data of tvseries">
             <div class="card h-100 shadow-lg">
-                <img [src]="data.img" loading="lazy" class="card-img-top" alt="{{data.title}}">
-                <!-- onerror="this.src='assets/default-image.jpg';" -->
+                <img [src]="data.img" loading="lazy" class="card-img-top" alt="{{data.title}}" onerror="this.src='assets/default-image.jpg';">
                 <div class="card-body">
                     <h4 class="card-title">{{data.title}}</h4>
                     <p class="card-text text-muted small mb-0">{{data.category}}</p>
