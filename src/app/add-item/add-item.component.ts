@@ -18,8 +18,10 @@ export class AddItemComponent {
   imgName: string = "No File Selected";
   image!: File;
   categories: string[] = [];
+  tags: string[] = [];
   languages: string[] = [];
   filteredLanguages: string[] = [];
+  selectedtags: string[] = [];
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
@@ -46,20 +48,22 @@ export class AddItemComponent {
       episodes: [],
       img: [null, Validators.required],
       trailer: [],
+      tag:[null]
     })
   }
-
+  
   loadCategories() {
     this.tvSeriesService.getAllCategories().subscribe({
       next: (response) => {
-        this.categories = response
+        this.categories = response;
+        this.tags = response;
       },
       error: (error) => {
         this.toastr.error('Retrieve categories failed', 'Error');
       }
     })
   }
-
+  
   loadLanguages() {
     this.tvSeriesService.getAllLanguages().subscribe({
       next: (response) => {
@@ -71,16 +75,35 @@ export class AddItemComponent {
       }
     })
   }
-
+  
   onLanguageSearch(event: any) {
     const searchText = event.target.value.toLowerCase();
     this.filteredLanguages = this.languages.filter(lang =>
       lang.toLowerCase().includes(searchText)
     );
   }
-
+  
   display(language: any): string {
     return language ? language : '';
+  }
+  
+  availableTags(): string[] {
+    return this.tags.filter(c => !this.selectedtags.includes(c));
+  }
+
+  addTag(tag: string): void {
+    if (tag && !this.selectedtags.includes(tag)) {
+      this.selectedtags.push(tag);
+      this.detailsForm.get('tag')?.setValue(this.selectedtags);
+    }
+  }
+
+  removeTag(tag: string): void {
+    const index = this.selectedtags.indexOf(tag);
+    if (index >= 0) {
+      this.selectedtags.splice(index, 1);
+      this.detailsForm.get('tag')?.setValue(this.selectedtags);
+    }
   }
 
   onImageSelected(event: any) {
@@ -133,6 +156,7 @@ export class AddItemComponent {
           language: this.detailsForm.get('language')?.value,
           description: this.detailsForm.get('description')?.value,
           releasedDate: this.detailsForm.get('releasedDate')?.value.toLocaleDateString("en-CA"),
+          tags: this.selectedtags,
           seasons: this.detailsForm.get('seasons')?.value,
           episodes: this.detailsForm.get('episodes')?.value,
           img: this.image, // this.detailsForm.get('img')?.value, also ok

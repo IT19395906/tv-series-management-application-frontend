@@ -68,6 +68,24 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="reduce-width mt-1">
+                        <mat-label>Tags</mat-label>
+                        <mat-select [disabled]="selectedtags.length >= 3" (selectionChange)="addTag($event.value)" formControlName="tag">
+                            <mat-option *ngFor="let tag of availableTags()" [value]="tag">
+                                {{ tag }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-chip-set style="margin-top: -1rem;" class="mb-1" >
+                        <mat-chip *ngFor="let selected of selectedtags" [removable]="true"
+                            (removed)="removeTag(selected)">
+                            {{ selected }}
+                            <mat-icon matChipRemove>cancel</mat-icon>
+                        </mat-chip>
+                    </mat-chip-set>
+
+
+                    <mat-form-field appearance="outline" class="reduce-width mt-1">
                         <mat-label>Total Number of Seasons</mat-label>
                         <input matInput type="number" min="1" max="50" placeholder="Enter Total Number of Seasons"
                             formControlName="seasons" />

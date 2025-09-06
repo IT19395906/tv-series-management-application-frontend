@@ -6,6 +6,7 @@ export interface SubmitDto {
     quality: string;
     description: string;
     releasedDate: Date;
+    tags:string[];
     seasons: number;
     episodes: number;
     img: File;

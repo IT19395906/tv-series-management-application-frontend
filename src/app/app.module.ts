@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DatePipe } from '@angular/common';
@@ -111,6 +112,7 @@ const icons = {
     MatDatepickerModule,
     HttpClientModule,
     MatDialogModule,
+    MatChipsModule,
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot(
