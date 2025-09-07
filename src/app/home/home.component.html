@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{data.title}}</h4>
                     <p class="card-text text-muted small mb-0">{{data.category}}</p>
-                    <p class="card-text text-muted small mb-0">{{data.quality}}</p>
+                    <p class="card-text text-muted small mb-0">{{data.quality}}&nbsp;{{data.format}}</p>
                     <p class="card-text text-muted small mb-0">{{data.releasedDate}}</p>
                     <p class="fw-bold mb-0"><span class="status-circle" [ngClass]="{
                 'bg-success': data.status === 'ongoing',
