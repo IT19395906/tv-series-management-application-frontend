@@ -4,6 +4,7 @@ export interface SubmitDto {
     title: string;
     language: string;
     quality: string;
+    format: string;
     description: string;
     releasedDate: Date;
     tags:string[];

@@ -41,6 +41,7 @@ export class AddItemComponent {
       status: ['ongoing', Validators.required],
       title: ['', Validators.required],
       quality: [''],
+      format: [''],
       language: ['', Validators.required],
       description: ['', Validators.required],
       releasedDate: ['', Validators.required],
@@ -51,7 +52,7 @@ export class AddItemComponent {
       tag:[null]
     })
   }
-  
+
   loadCategories() {
     this.tvSeriesService.getAllCategories().subscribe({
       next: (response) => {
@@ -153,6 +154,7 @@ export class AddItemComponent {
           status: this.detailsForm.get('status')?.value,
           title: this.detailsForm.get('title')?.value,
           quality: this.detailsForm.get('quality')?.value,
+          format: this.detailsForm.get('format')?.value,
           language: this.detailsForm.get('language')?.value,
           description: this.detailsForm.get('description')?.value,
           releasedDate: this.detailsForm.get('releasedDate')?.value.toLocaleDateString("en-CA"),
