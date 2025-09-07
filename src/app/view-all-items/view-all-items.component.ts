@@ -203,7 +203,7 @@ export class ViewAllItemsComponent {
         const index = this.tvSeriesDataSource.data.indexOf(element);
         this.tvSeriesService.deleteTvSeries(element.id).subscribe({
           next: (response) => {
-            if (response == "Successfully Deleted Tv series") {
+            if (response.message == "Successfully Deleted Tv series") {
               if (index >= 0) {
                 // don't need to update table again with datasource because you change datasource.data
                 const deletedObj = this.tvSeriesDataSource.data.splice(index, 1);
