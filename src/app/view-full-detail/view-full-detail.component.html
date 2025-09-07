@@ -1,1 +1,13 @@
-<p>view-full-detail works!</p>
+<div *ngIf="data.img" class="text-center">
+  <img style="height: 20rem;" [src]="data.img" alt="{{data.title}}" onerror="this.src='assets/default-image.jpg';" />
+</div>
+
+<h2 class="mt-3">{{ data.title }}</h2>
+<p><strong>Category:</strong> {{ data.category }}</p>
+<p><strong>Quality:</strong> {{ data.quality }}</p>
+<p><strong>Released:</strong> {{ data.releasedDate }}</p>
+<p><strong>Status:</strong> {{ data.status }}</p>
+
+<div *ngIf="data.trailer" class="mt-4 ratio ratio-16x9">
+  <iframe title="YouTube trailer" [src]="sanitizeUrl(data.trailer)" frameborder="0" allowfullscreen></iframe>
+</div>
