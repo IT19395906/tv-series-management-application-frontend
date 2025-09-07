@@ -53,7 +53,7 @@
                 <mat-datepicker-toggle matIconSuffix [for]="addedDatePicker"></mat-datepicker-toggle>
                 <mat-date-range-picker #addedDatePicker></mat-date-range-picker>
             </mat-form-field>
-            <mat-error *ngIf="addedDateForm.hasError('incompleteRange')" style="font-size: smaller; margin-top: -1rem;">start date and end date required</mat-error>
+            <mat-error *ngIf="addedDateForm.hasError('incompleteRange') && (addedDateForm?.touched || addedDateForm?.dirty)" style="font-size: smaller; margin-top: -1rem;">start date and end date required</mat-error>
         </div>
 
         <div class="col-lg-2 col-md-6 col-sm-12">
