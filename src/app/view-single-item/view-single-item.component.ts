@@ -50,7 +50,7 @@ export class ViewSingleItemComponent implements OnInit {
       releasedDate: [new Date(this.data?.releasedDate), Validators.required],
       seasons: [this.data?.seasons],
       episodes: [this.data?.episodes],
-      img: [this.data?.image, Validators.required],
+      img: [this.data?.img, Validators.required],
       trailer: [this.data?.trailer],
     });
 

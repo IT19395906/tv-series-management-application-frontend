@@ -25,27 +25,27 @@ export class ViewAllItemsComponent {
   tvseriesdata = [
     {
       id: "1", category: "Mystery", title: "Breaking Bad", description: "A high school chemistry teacher turned methamphetamine producer", quality: "1080p", addedDate: '25-08-2025', addedBy: 'hfdhfgh',
-      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", image: "https://media.istockphoto.com/id/1255163297/vector/user-profile-icon-vector-avatar-portrait-symbol-flat-shape-person-sign-logo-black-silhouette.jpg?s=1024x1024&w=is&k=20&c=e7QMdfY28VXYe5RbvkARtPlmk6zKQAaFrcgtIkXarfg=", seasons: 5, episodes: 62, language: 'English'
+      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", img: "https://media.istockphoto.com/id/1255163297/vector/user-profile-icon-vector-avatar-portrait-symbol-flat-shape-person-sign-logo-black-silhouette.jpg?s=1024x1024&w=is&k=20&c=e7QMdfY28VXYe5RbvkARtPlmk6zKQAaFrcgtIkXarfg=", seasons: 5, episodes: 62, language: 'English'
     },
     {
       id: "2", category: "Action", title: "Breaking Bad", description: "A high school chemistry teacher turned methamphetamine producer", quality: "1080p", addedDate: '23-08-2025', addedBy: 'hfdhfgh',
-      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", image: "", seasons: 5, episodes: 62, language: 'English'
+      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", img: "", seasons: 5, episodes: 62, language: 'English'
     },
     {
       id: "3", category: "Comedy", title: "Breaking Bad", description: "A high school chemistry teacher turned methamphetamine producer", quality: "1080p", addedDate: '23-08-2025', addedBy: 'hfdhfgh',
-      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", image: "byte string", seasons: 5, episodes: 62, language: 'English'
+      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", img: "byte string", seasons: 5, episodes: 62, language: 'English'
     },
     {
       id: "4", category: "Horror", title: "Breaking Bad", description: "A high school chemistry teacher turned methamphetamine producer", quality: "1080p", addedDate: '23-08-2025', addedBy: 'hfdhfgh',
-      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", image: "byte string", seasons: 5, episodes: 62, language: 'English'
+      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", img: "byte string", seasons: 5, episodes: 62, language: 'English'
     },
     {
       id: "5", category: "Adventure", title: "Breaking Bad", description: "A high school chemistry teacher turned methamphetamine producer", quality: "1080p", addedDate: '23-08-2025', addedBy: 'hfdhfgh',
-      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", image: "byte string", seasons: 5, episodes: 62, language: 'English'
+      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", img: "byte string", seasons: 5, episodes: 62, language: 'English'
     },
     {
       id: "6", category: "Romance", title: "Breaking Bad", description: "A high school chemistry teacher turned methamphetamine producer", quality: "1080p", addedDate: '23-08-2025', addedBy: 'hfdhfgh',
-      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", image: "byte string", seasons: 5, episodes: 62, language: 'English'
+      releasedDate: '2008-01-20', status: 'completed', trailer: "https://youtube.com/trailer-link", img: "byte string", seasons: 5, episodes: 62, language: 'English'
     }
   ];
   tvSeriesDataSource = new MatTableDataSource<any>(this.tvseriesdata)
