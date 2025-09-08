@@ -42,8 +42,8 @@ export class AddItemComponent {
       title: ['', Validators.required],
       quality: [''],
       format: [''],
-      imdb: [],
-      ro: [],
+      imdb: [[Validators.min(1), Validators.max(10)]],
+      ro: [[Validators.min(1), Validators.max(100)]],
       language: ['', Validators.required],
       description: ['', Validators.required],
       releasedDate: ['', Validators.required],
@@ -51,7 +51,7 @@ export class AddItemComponent {
       episodes: [],
       img: [null, Validators.required],
       trailer: [],
-      tag:[null]
+      tag: [null]
     })
   }
 
@@ -66,7 +66,7 @@ export class AddItemComponent {
       }
     })
   }
-  
+
   loadLanguages() {
     this.tvSeriesService.getAllLanguages().subscribe({
       next: (response) => {
@@ -78,26 +78,18 @@ export class AddItemComponent {
       }
     })
   }
-  
+
   onLanguageSearch(event: any) {
     const searchText = event.target.value.toLowerCase();
     this.filteredLanguages = this.languages.filter(lang =>
       lang.toLowerCase().includes(searchText)
     );
   }
-  
+
   display(language: any): string {
     return language ? language : '';
   }
-  
-  onImdbInput(event: any){
 
-  }
-  
-  onRoInput(event:any){
-
-  }
-  
   availableTags(): string[] {
     return this.tags.filter(c => !this.selectedtags.includes(c));
   }
@@ -169,8 +161,8 @@ export class AddItemComponent {
           description: this.detailsForm.get('description')?.value,
           releasedDate: this.detailsForm.get('releasedDate')?.value.toLocaleDateString("en-CA"),
           tags: this.selectedtags,
-          imdb:this.detailsForm.get('imdb')?.value,
-          ro:this.detailsForm.get('ro')?.value,          
+          imdb: this.detailsForm.get('imdb')?.value,
+          ro: this.detailsForm.get('ro')?.value,
           seasons: this.detailsForm.get('seasons')?.value,
           episodes: this.detailsForm.get('episodes')?.value,
           img: this.image, // this.detailsForm.get('img')?.value, also ok

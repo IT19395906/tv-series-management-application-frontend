@@ -66,14 +66,6 @@ export class ViewSingleItemComponent implements OnInit {
     );
   }
 
-  onImdbInput(event: any) {
-
-  }
-
-  onRoInput(event: any) {
-
-  }
-
   display(language: any): string {
     return language ? language : '';
   }
