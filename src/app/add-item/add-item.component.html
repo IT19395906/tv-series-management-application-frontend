@@ -35,7 +35,7 @@
                         </mat-select>
                     </mat-form-field>
 
-                     <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
+                    <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
                         <mat-label>Format</mat-label>
                         <mat-select formControlName="format">
                             <mat-option value="WEB-DL">WEB-DL</mat-option>
@@ -84,14 +84,15 @@
 
                     <mat-form-field appearance="outline" class="reduce-width mt-1">
                         <mat-label>Tags</mat-label>
-                        <mat-select [disabled]="selectedtags.length >= 3" (selectionChange)="addTag($event.value)" formControlName="tag">
+                        <mat-select [disabled]="selectedtags.length >= 3" (selectionChange)="addTag($event.value)"
+                            formControlName="tag">
                             <mat-option *ngFor="let tag of availableTags()" [value]="tag">
                                 {{ tag }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-chip-set style="margin-top: -1rem;" class="mb-1" >
+                    <mat-chip-set style="margin-top: -1rem;" class="mb-1">
                         <mat-chip *ngFor="let selected of selectedtags" [removable]="true"
                             (removed)="removeTag(selected)">
                             {{ selected }}
@@ -129,6 +130,20 @@
                         <mat-label>Image</mat-label>
                         <input type="file" #fileInput accept="image/*" required />
                     </div> -->
+
+                    <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
+                        <mat-label>IMDB Rate</mat-label>
+                        <input matInput type="number" min="1" max="10" step="0.1" placeholder="Enter IMDB Rate"
+                            (input)="onImdbInput($event)" formControlName="imdb" />
+                        <span matTextSuffix>/10</span>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
+                        <mat-label>Rotten Tomatoes</mat-label>
+                        <input matInput type="number" min="1" max="100" step="0.1" placeholder="Enter Rotten Tomatoes"
+                            (input)="onRoInput($event)" formControlName="ro" />
+                        <span matTextSuffix>%</span>
+                    </mat-form-field>
 
                     <mat-form-field appearance="outline" class="reduce-width mt-1">
                         <mat-label>Youtube Trailer</mat-label>

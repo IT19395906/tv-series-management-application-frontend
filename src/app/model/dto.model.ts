@@ -8,6 +8,8 @@ export interface SubmitDto {
     description: string;
     releasedDate: Date;
     tags:string[];
+    imdb:number;
+    ro:number;
     seasons: number;
     episodes: number;
     img: File;

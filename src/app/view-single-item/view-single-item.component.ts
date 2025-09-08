@@ -123,6 +123,8 @@ export class ViewSingleItemComponent implements OnInit {
           description: this.detailsForm.get('description')?.value,
           releasedDate: this.detailsForm.get('releasedDate')?.value,
           tags:[],
+          imdb:0,
+          ro:0,
           seasons: this.detailsForm.get('seasons')?.value,
           episodes: this.detailsForm.get('episodes')?.value,
           img: this.detailsForm.get('img')?.value,

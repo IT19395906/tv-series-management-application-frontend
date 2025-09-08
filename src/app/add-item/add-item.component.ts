@@ -42,6 +42,8 @@ export class AddItemComponent {
       title: ['', Validators.required],
       quality: [''],
       format: [''],
+      imdb: [],
+      ro: [],
       language: ['', Validators.required],
       description: ['', Validators.required],
       releasedDate: ['', Validators.required],
@@ -86,6 +88,14 @@ export class AddItemComponent {
   
   display(language: any): string {
     return language ? language : '';
+  }
+  
+  onImdbInput(event: any){
+
+  }
+  
+  onRoInput(event:any){
+
   }
   
   availableTags(): string[] {
@@ -159,6 +169,8 @@ export class AddItemComponent {
           description: this.detailsForm.get('description')?.value,
           releasedDate: this.detailsForm.get('releasedDate')?.value.toLocaleDateString("en-CA"),
           tags: this.selectedtags,
+          imdb:this.detailsForm.get('imdb')?.value,
+          ro:this.detailsForm.get('ro')?.value,          
           seasons: this.detailsForm.get('seasons')?.value,
           episodes: this.detailsForm.get('episodes')?.value,
           img: this.image, // this.detailsForm.get('img')?.value, also ok
