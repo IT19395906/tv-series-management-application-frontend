@@ -116,8 +116,12 @@
 
                         <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
                             <mat-label>IMDB Rate</mat-label>
-                            <input matInput type="number" min="1" max="10" step="0.1" placeholder="Enter IMDB Rate" formControlName="imdb" />
+                            <input matInput type="number" min="1" max="10" step="0.1" placeholder="Enter IMDB Rate"
+                                formControlName="imdb" />
                             <span matTextSuffix>/10</span>
+                            <mat-error
+                                *ngIf="detailsForm.get('imdb')?.hasError('min') || detailsForm.get('imdb')?.hasError('max')">
+                                IMDB Rate must be within 1-10</mat-error>
                         </mat-form-field>
 
                         <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
@@ -125,7 +129,11 @@
                             <input matInput type="number" min="1" max="100" step="0.1"
                                 placeholder="Enter Rotten Tomatoes" formControlName="ro" />
                             <span matTextSuffix>%</span>
+                            <mat-error
+                                *ngIf="detailsForm.get('ro')?.hasError('min') || detailsForm.get('ro')?.hasError('max')">
+                                Rotten Tomatoes must be within 1-100</mat-error>
                         </mat-form-field>
+
 
                         <mat-form-field appearance="outline" class="reduce-width mt-1">
                             <mat-label>Youtube Trailer</mat-label>

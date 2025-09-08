@@ -137,7 +137,8 @@
                             formControlName="imdb" />
                         <span matTextSuffix>/10</span>
                         <mat-error
-                            *ngIf="detailsForm.get('imdb')?.hasError('min') || detailsForm.get('imdb')?.hasError('max')">IMDB Rate must be 1 - 10</mat-error>
+                            *ngIf="detailsForm.get('imdb')?.hasError('min') || detailsForm.get('imdb')?.hasError('max')">
+                            IMDB Rate must be within 1-10</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
@@ -146,7 +147,8 @@
                             formControlName="ro" />
                         <span matTextSuffix>%</span>
                         <mat-error
-                            *ngIf="detailsForm.get('ro')?.hasError('min') || detailsForm.get('ro')?.hasError('max')">Rotten Tomatoes must be 1 - 100</mat-error>
+                            *ngIf="detailsForm.get('ro')?.hasError('min') || detailsForm.get('ro')?.hasError('max')">
+                            Rotten Tomatoes must be within 1-100</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="reduce-width mt-1">
