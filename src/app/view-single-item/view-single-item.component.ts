@@ -46,6 +46,8 @@ export class ViewSingleItemComponent implements OnInit {
       title: [this.data?.title, Validators.required],
       quality: [this.data?.quality],
       format: [this.data?.format],
+      imdb: [this.data?.imdb],
+      ro: [this.data?.ro],
       language: [this.data?.language, Validators.required],
       description: [this.data?.description, Validators.required],
       releasedDate: [new Date(this.data?.releasedDate), Validators.required],
@@ -62,6 +64,14 @@ export class ViewSingleItemComponent implements OnInit {
     this.filteredLanguages = this.languages.filter(lang =>
       lang.toLowerCase().includes(searchText)
     );
+  }
+
+  onImdbInput(event: any) {
+
+  }
+
+  onRoInput(event: any) {
+
   }
 
   display(language: any): string {
@@ -118,13 +128,13 @@ export class ViewSingleItemComponent implements OnInit {
           status: this.detailsForm.get('status')?.value,
           title: this.detailsForm.get('title')?.value,
           quality: this.detailsForm.get('quality')?.value,
-          format:this.detailsForm.get('format')?.value,
+          format: this.detailsForm.get('format')?.value,
           language: this.detailsForm.get('language')?.value,
           description: this.detailsForm.get('description')?.value,
           releasedDate: this.detailsForm.get('releasedDate')?.value,
-          tags:[],
-          imdb:0,
-          ro:0,
+          tags: [],
+          imdb: this.detailsForm.get('imdb')?.value,
+          ro: this.detailsForm.get('ro')?.value,
           seasons: this.detailsForm.get('seasons')?.value,
           episodes: this.detailsForm.get('episodes')?.value,
           img: this.detailsForm.get('img')?.value,

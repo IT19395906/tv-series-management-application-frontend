@@ -37,20 +37,20 @@
                             </mat-select>
                         </mat-form-field>
 
-                         <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
-                        <mat-label>Format</mat-label>
-                        <mat-select formControlName="format">
-                            <mat-option value="WEB-DL">WEB-DL</mat-option>
-                            <mat-option value="WEBRip">WEBRip</mat-option>
-                            <mat-option value="HDTV">HDTV</mat-option>
-                            <mat-option value="DVDRip">DVDRip</mat-option>
-                            <mat-option value="BDRip">BDRip</mat-option>
-                            <mat-option value="BRRip">BRRip</mat-option>
-                            <mat-option value="HDRip">HDRip</mat-option>
-                            <mat-option value="CAM">CAM</mat-option>
-                            <mat-option value="SDTV">SDTV</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                        <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
+                            <mat-label>Format</mat-label>
+                            <mat-select formControlName="format">
+                                <mat-option value="WEB-DL">WEB-DL</mat-option>
+                                <mat-option value="WEBRip">WEBRip</mat-option>
+                                <mat-option value="HDTV">HDTV</mat-option>
+                                <mat-option value="DVDRip">DVDRip</mat-option>
+                                <mat-option value="BDRip">BDRip</mat-option>
+                                <mat-option value="BRRip">BRRip</mat-option>
+                                <mat-option value="HDRip">HDRip</mat-option>
+                                <mat-option value="CAM">CAM</mat-option>
+                                <mat-option value="SDTV">SDTV</mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
                         <mat-form-field appearance="outline" class="reduce-width mt-1">
                             <mat-label>Language</mat-label>
@@ -97,7 +97,8 @@
                         </mat-form-field>
 
                         <div *ngIf="updatedImagePreview || detailsForm.get('img')?.value" class="text-center mb-1">
-                            <img [src]="updatedImagePreview ? updatedImagePreview : detailsForm.get('img')?.value" alt="original" class="preview-img" />
+                            <img [src]="updatedImagePreview ? updatedImagePreview : detailsForm.get('img')?.value"
+                                alt="original" class="preview-img" />
                         </div>
 
                         <mat-form-field appearance="outline" class="reduce-width mt-1">
@@ -112,6 +113,20 @@
                         </mat-form-field>
 
                         <input type="file" #fileInput accept="image/*" (change)="onImageSelected($event)" hidden>
+
+                        <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
+                            <mat-label>IMDB Rate</mat-label>
+                            <input matInput type="number" min="1" max="10" step="0.1" placeholder="Enter IMDB Rate"
+                                (input)="onImdbInput($event)" formControlName="imdb" />
+                            <span matTextSuffix>/10</span>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="reduce-width col-lg-6 col-md-12 col-sm-12 mt-1">
+                            <mat-label>Rotten Tomatoes</mat-label>
+                            <input matInput type="number" min="1" max="100" step="0.1"
+                                placeholder="Enter Rotten Tomatoes" (input)="onRoInput($event)" formControlName="ro" />
+                            <span matTextSuffix>%</span>
+                        </mat-form-field>
 
                         <mat-form-field appearance="outline" class="reduce-width mt-1">
                             <mat-label>Youtube Trailer</mat-label>
