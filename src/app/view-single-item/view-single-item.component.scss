@@ -1,3 +1,13 @@
+@use '@angular/material' as mat;
+
+.minHeight {
+    @include mat.all-component-densities(-3);
+    @include mat.button-density(0);
+}
+
+
+
+
 .preview-img {
   max-width: 8rem;
   height: auto;

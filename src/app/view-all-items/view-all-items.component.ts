@@ -182,7 +182,8 @@ export class ViewAllItemsComponent {
   editRecord(element: any) {
     this.dialog.open(ViewSingleItemComponent,
       {
-        width: '80vw',
+        width: '50vw',
+        maxWidth: '100vw',
         data: element
       }
     );
