@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   tvseries: any[] = [];
+  totalPages: number = 0;
+  currentPage: number = 1;
+  pageSize: number = 8;
 
   constructor(
     private router: Router,
@@ -20,10 +23,15 @@ export class HomeComponent {
   ) { }
 
   ngOnInit(): void {
-    this.tvSeriesService.getAllTvSeries().subscribe({
+    this.getAll();
+  }
+
+  getAll(): void {
+    this.tvSeriesService.getAllTvSeries(this.currentPage - 1, this.pageSize).subscribe({
       next: (response) => {
         if (response.content) {
           this.tvseries = response.content;
+          this.totalPages = response.totalPages;
         }
       },
       error: (error) => {
@@ -32,6 +40,34 @@ export class HomeComponent {
       },
       complete: () => { }
     })
+  }
+
+  first(): void {
+    if (this.currentPage > 1) {
+      this.currentPage = 1;
+      this.getAll();
+    }
+  }
+
+  previous(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.getAll();
+    }
+  }
+
+  next(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getAll();
+    }
+  }
+
+  last(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage = this.totalPages;
+      this.getAll();
+    }
   }
 
   navigate(data: any) {
