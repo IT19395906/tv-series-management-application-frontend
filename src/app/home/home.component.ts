@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { TvSeriesService } from '../tv-series.service';
+import { TvSeriesService } from '../service/tv-series.service';
 import { Router } from '@angular/router';
 
 @Component({

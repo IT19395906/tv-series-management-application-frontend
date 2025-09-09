@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
-import { TvSeriesService } from '../tv-series.service';
+import { TvSeriesService } from '../service/tv-series.service';
 import { SubmitDto } from '../model/dto.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 

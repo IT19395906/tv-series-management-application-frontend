@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SearchDto, SubmitDto } from './model/dto.model';
+import { SearchDto, SubmitDto } from '../model/dto.model';
 
 export const environment = {
   production: false,
@@ -17,8 +17,8 @@ export class TvSeriesService {
   private readonly apiUrl = `${environment.apiBaseUrl}/api/tvseries/`;
 
   addTvSeriesData(submitDto: SubmitDto): Observable<any> {
-    const token = localStorage.getItem('jwtToken');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const token = localStorage.getItem('jwtToken'); // comment this if want default without jwt
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); // comment this if want default without jwt
     return this.http.post<any>(this.apiUrl + 'add', submitDto, { headers });
   }
 
