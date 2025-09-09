@@ -149,19 +149,4 @@ export class SidebarComponent {
       this.renderer.removeClass(this.document.body, 'sidebar-gone');
     }
   }
-
-  mouseHover(e: any) {
-    const body = this.elementRef.nativeElement.closest('body');
-    if (body.classList.contains('submenu-closed')) {
-      this.renderer.addClass(this.document.body, 'side-closed-hover');
-      this.renderer.removeClass(this.document.body, 'submenu-closed');
-    }
-  }
-  mouseOut(e: any) {
-    const body = this.elementRef.nativeElement.closest('body');
-    if (body.classList.contains('side-closed-hover')) {
-      this.renderer.removeClass(this.document.body, 'side-closed-hover');
-      this.renderer.addClass(this.document.body, 'submenu-closed');
-    }
-  }
 }

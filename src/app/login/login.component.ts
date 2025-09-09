@@ -28,11 +28,14 @@ export class LoginComponent {
     }
 
     if (this.username.trim() == 'admin' && this.password == 'password') {
-      localStorage.setItem('isLoggedIn', 'true');
-      this.authService.login(this.username,this.password).subscribe(
+      this.authService.login(this.username, this.password).subscribe(
         response => {
-          localStorage.setItem('jwtToken', response.token); 
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('jwtToken', response.token);
           this.router.navigate(['/home']);
+        },
+        error => {
+          this.toastr.error('Login attempt failed', 'Error');
         }
       );
     } else {
@@ -40,7 +43,7 @@ export class LoginComponent {
     }
   }
 
-  show(): void{
+  show(): void {
     this.showPassword = !this.showPassword;
   }
 }
