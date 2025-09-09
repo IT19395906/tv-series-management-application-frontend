@@ -40,18 +40,6 @@
             cursor: pointer;
           }
         }
-
-        .ml-menu, .ml-menu-2 {
-          display: none;
-          padding-left: 15px;
-
-        }
-      }
-
-      /* Show the submenu when the parent is active */
-      li.active > .ml-menu,
-      li.active > .ml-menu-2 {
-        display: block;
       }
     }
   }

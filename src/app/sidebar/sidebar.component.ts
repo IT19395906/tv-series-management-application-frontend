@@ -56,21 +56,13 @@ export const ROUTES: SidebarValues[] = [
 export class SidebarComponent {
   public sidebarItems: any[] | undefined;
   public innerHeight: any;
-  public bodyTag: any;
   listMaxHeight: string | undefined;
   listMaxWidth: string | undefined;
-  userFullName: string | undefined;
-  userImg: string | undefined;
-  userType: string | undefined;
-  headerHeight = 60;
-  routerObj: any;
-  currentRoute: string | undefined;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     public elementRef: ElementRef,
-    private router: Router
   ) {}
 
   @HostListener('window:resize', ['$event'])
@@ -94,7 +86,6 @@ export class SidebarComponent {
   ngOnInit() {
     this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
     this.initLeftSidebar();
-    this.bodyTag = this.document.body;
   }
 
   initLeftSidebar() {
@@ -106,7 +97,7 @@ export class SidebarComponent {
 
   setMenuHeight() {
     this.innerHeight = window.innerHeight;
-    const height = this.innerHeight - this.headerHeight;
+    const height = this.innerHeight - 60;
     this.listMaxHeight = height + '';
     this.listMaxWidth = '500px';
 
