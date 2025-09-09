@@ -1,7 +1,3 @@
- .disabled-li {
-    color: gray;
-    text-decoration: line-through;
-  }
 
 .sidebar {
   width: 250px;
@@ -15,17 +11,6 @@
   z-index: 1000;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
 
-  /* Hover effect to show the sidebar */
-  &.side-closed-hover {
-    width: 80px;
-  }
-
-  /* When the sidebar is hidden (in mobile view) */
-  &.sidebar-gone {
-    transform: translateX(-100%);
-    visibility: hidden;
-    transition: transform 0.3s ease-in-out;
-  }
 
   .menu {
     padding: 15px 0;
@@ -42,13 +27,6 @@
           background-color: #3a4b59;
         }
 
-        .header {
-          font-size: 16px;
-          font-weight: bold;
-          margin-bottom: 5px;
-          padding: 10px;
-        }
-
         .menu-top {
           display: flex;
           align-items: center;
@@ -61,44 +39,12 @@
             background-color: #3a4b59;
             cursor: pointer;
           }
-
-          .hide-menu {
-            margin-right: 10px;
-          }
-
-          .badge {
-            background-color: #e74c3c;
-            border-radius: 50%;
-            color: #fff;
-            padding: 3px 8px;
-            font-size: 12px;
-          }
         }
 
         .ml-menu, .ml-menu-2 {
           display: none;
           padding-left: 15px;
 
-          .sidebar-style {
-            &.active {
-              background-color: #34495e;
-            }
-
-            a {
-              color: #fff;
-              padding: 8px 10px;
-              display: block;
-              text-decoration: none;
-
-              &:hover {
-                background-color: #34495e;
-              }
-            }
-
-            .sidebar-style.active > a {
-              background-color: #34495e;
-            }
-          }
         }
       }
 
@@ -109,23 +55,6 @@
       }
     }
   }
-
-  /* Adjust the sidebar width when hovered */
-  &:hover {
-    width: 250px;
-  }
-}
-
-/* Styles for when sidebar is gone */
-.sidebar.sidebar-gone {
-  transform: translateX(-100%);
-}
-
-/* Styles for the sidebar when hovering */
-.sidebar.side-closed-hover {
-  width: 80px;
-  overflow: hidden;
-  transition: width 0.3s ease;
 }
 
 /* For list item active state */
@@ -162,10 +91,6 @@
         margin: 0;
         list-style: none;
       }
-    }
-
-    &.sidebar-gone {
-      display: none;
     }
   }
 }

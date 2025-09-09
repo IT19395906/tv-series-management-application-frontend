@@ -70,38 +70,14 @@ export class SidebarComponent {
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     public elementRef: ElementRef,
-    // private authService: AuthService,
     private router: Router
-  ) {
-    this.routerObj = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.renderer.removeClass(this.document.body, 'overlay-open');
-        this.sidebbarClose();
-      }
-    });
-  }
-
-  sidebbarClose() {
-    if (window.innerWidth < 1025) {
-      this.renderer.addClass(this.document.body, 'sidebar-gone');
-    }
-  }
+  ) {}
 
   @HostListener('window:resize', ['$event'])
   windowResizecall(event: any) {
-    if (window.innerWidth < 1025) {
-      this.renderer.removeClass(this.document.body, 'side-closed');
-    }
     this.setMenuHeight();
-    this.checkStatuForResize(false);
   }
-  @HostListener('document:mousedown', ['$event'])
-  onGlobalClick(event: { target: any; }): void {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.renderer.removeClass(this.document.body, 'overlay-open');
-      this.sidebbarClose();
-    }
-  }
+
   callToggleMenu(event: any, length: any) {
     if (length > 0) {
       const parentElement = event.target.closest('li');
@@ -124,9 +100,7 @@ export class SidebarComponent {
   initLeftSidebar() {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const _this = this;
-    // Set menu height
     _this.setMenuHeight();
-    _this.checkStatuForResize(true);
 
   }
 
@@ -136,17 +110,5 @@ export class SidebarComponent {
     this.listMaxHeight = height + '';
     this.listMaxWidth = '500px';
 
-  }
-
-  isOpen() {
-    return this.bodyTag.classList.contains('overlay-open');
-  }
-
-  checkStatuForResize(firstTime: boolean) {
-    if (window.innerWidth < 1025) {
-      this.renderer.addClass(this.document.body, 'sidebar-gone');
-    } else {
-      this.renderer.removeClass(this.document.body, 'sidebar-gone');
-    }
   }
 }
