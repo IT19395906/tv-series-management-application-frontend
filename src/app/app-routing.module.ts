@@ -7,12 +7,14 @@ import { ViewFullDetailComponent } from './view-full-detail/view-full-detail.com
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'add-item', component: AddItemComponent, canActivate: [AuthGuard] },
   { path: 'view', component: ViewAllItemsComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
+  { path: 'search', component: SearchComponent },
   { path: 'view-detail/:id', component: ViewFullDetailComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   {path: '**', component: NotFoundComponent}

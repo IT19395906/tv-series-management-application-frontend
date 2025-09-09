@@ -11,6 +11,17 @@
   z-index: 1000;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
 
+    &.collapsed{
+      width: 80px;
+
+      .sidebar-title{
+        display: none;
+      }
+
+      .menu .myNavStyle{
+        justify-content: center;
+      }
+    }
 
   .menu {
     padding: 15px 0;
@@ -21,7 +32,8 @@
       list-style: none;
 
       .myNavStyle {
-        position: relative;
+       display: flex;
+       position: relative;
 
         &.active {
           background-color: #3a4b59;
@@ -34,10 +46,22 @@
           text-decoration: none;
           color: #fff;
           font-size: 14px;
+          width:100%;
 
           &:hover {
             background-color: #3a4b59;
             cursor: pointer;
+          }
+
+          .sidebar-icon{
+            margin-left: 1rem;
+            min-width: 20px;
+            text-align: center;
+          }
+
+          .sidebar-title{
+            white-space: nowrap;
+            transition: opacity 0.3s ease;
           }
         }
       }
@@ -45,40 +69,26 @@
   }
 }
 
-/* For list item active state */
 .sidebar .active {
   background-color: #34495e;
   transition: background-color 0.2s ease;
 }
 
-/* For screen resizing */
 @media screen and (max-width: 1024px) {
   .sidebar {
     width: 80px;
 
+    .sidebar-title{
+      display: none;
+    }
+
     .menu .myNavStyle {
       font-size: 12px;
+      justify-content: center;
     }
   }
 }
 
-/* Styles for the menu list on smaller screens */
 @media screen and (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
 
-    .menu {
-      padding: 10px 5px;
-
-      ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-      }
-    }
-  }
 }

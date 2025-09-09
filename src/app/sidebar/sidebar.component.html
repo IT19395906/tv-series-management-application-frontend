@@ -1,12 +1,12 @@
 <div>
-  <aside id="leftsidebar" class="sidebar main-sidebar">
+  <aside id="leftsidebar" class="sidebar main-sidebar" [ngClass]="{'collapsed': isCollapsed}">
     <div class="menu">
       <ul [ngStyle]="{'position' : 'relative', 'max-height' : listMaxHeight+'px', 'max-width' : listMaxWidth+'px'}">
         <ng-container *ngFor="let sidebarItem of sidebarItems">
           <li [routerLinkActive]="'active-top'" class="myNavStyle">
             <a [routerLink]="[sidebarItem.path]" [ngClass]="[sidebarItem.class]" class="menu-top"
               (click)="callToggleMenu($event, sidebarItem.submenu.length)">
-              <span>{{sidebarItem.title}} </span>
+              <span class="sidebar-title">{{sidebarItem.title}} </span><i *ngIf="sidebarItem.icon" [ngClass]="[sidebarItem.iconType, sidebarItem.icon]" style="margin-left: 1rem;"></i>
             </a>
           </li>
         </ng-container>

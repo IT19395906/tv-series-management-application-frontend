@@ -8,8 +8,21 @@ export const ROUTES: SidebarValues[] = [
   {
     path: 'home',
     title: 'Home',
-    iconType: 'feather',
-    icon: 'settings',
+    iconType: 'fa',
+    icon: 'fa-home',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [],
+    disabled: false,
+    permission: ''
+  },
+  {
+    path: 'search',
+    title: 'Search',
+    iconType: 'fa',
+    icon: 'fa-search',
     class: '',
     groupTitle: false,
     badge: '',
@@ -21,8 +34,8 @@ export const ROUTES: SidebarValues[] = [
   {
     path: 'add-item',
     title: 'Add Tv Series',
-    iconType: 'feather',
-    icon: 'settings',
+    iconType: 'fa',
+    icon: 'fa-circle-plus',
     class: '',
     groupTitle: false,
     badge: '',
@@ -34,8 +47,8 @@ export const ROUTES: SidebarValues[] = [
   {
     path: 'view',
     title: 'View All Tv Series',
-    iconType: 'feather',
-    icon: 'settings',
+    iconType: 'fa',
+    icon: 'fa-tv',
     class: '',
     groupTitle: false,
     badge: '',
@@ -58,6 +71,7 @@ export class SidebarComponent {
   public innerHeight: any;
   listMaxHeight: string | undefined;
   listMaxWidth: string | undefined;
+  isCollapsed: boolean = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
