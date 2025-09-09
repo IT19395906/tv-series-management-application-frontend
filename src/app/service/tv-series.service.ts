@@ -17,8 +17,8 @@ export class TvSeriesService {
   private readonly apiUrl = `${environment.apiBaseUrl}/api/tvseries/`;
 
   addTvSeriesData(submitDto: SubmitDto): Observable<any> {
-    const token = localStorage.getItem('jwtToken'); // comment this if want default without jwt
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); // comment this if want default without jwt
+    const token = localStorage.getItem('jwtToken'); //    comment this line if jwt authentication is not required
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); //    comment this line if jwt authentication is not required
     return this.http.post<any>(this.apiUrl + 'add', submitDto, { headers });
   }
 
@@ -47,9 +47,7 @@ export class TvSeriesService {
   }
 
   getAllTvSeries(page: number, size: number): Observable<any> {
-    const token = localStorage.getItem('jwtToken');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const params = { page: page, size: size };
-    return this.http.get<any>(this.apiUrl + 'getAll', { params, headers });
+    return this.http.get<any>(this.apiUrl + 'getAll', { params });
   }
 }
