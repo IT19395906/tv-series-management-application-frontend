@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent {
   showPassword: boolean = false;
 
   constructor(private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService
   ) { }
 
   login(): void {
@@ -27,7 +29,12 @@ export class LoginComponent {
 
     if (this.username.trim() == 'admin' && this.password == 'password') {
       localStorage.setItem('isLoggedIn', 'true');
-      this.router.navigate(['/home']);
+      this.authService.login(this.username,this.password).subscribe(
+        response => {
+          localStorage.setItem('jwtToken', response.token); 
+          this.router.navigate(['/home']);
+        }
+      );
     } else {
       this.loginErr = true;
     }
