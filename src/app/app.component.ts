@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tv-series-management-application';
+
+  isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 }

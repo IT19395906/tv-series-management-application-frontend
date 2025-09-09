@@ -57,6 +57,8 @@ import { ViewAllItemsComponent } from './view-all-items/view-all-items.component
 import { ViewSingleItemComponent } from './view-single-item/view-single-item.component';
 import { HomeComponent } from './home/home.component';
 import { ViewFullDetailComponent } from './view-full-detail/view-full-detail.component';
+import { LoginComponent } from './login/login.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const icons = {
   Facebook,
@@ -90,7 +92,9 @@ const icons = {
     ViewAllItemsComponent,
     ViewSingleItemComponent,
     HomeComponent,
-    ViewFullDetailComponent
+    ViewFullDetailComponent,
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     MatMenuModule,

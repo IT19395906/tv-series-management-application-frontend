@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 card shadow-lg">
+            <div class="card-body">
+                <h4 class="text-center mb-4">Login</h4>
+                <form (ngSubmit)="login()">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" class="form-control" [(ngModel)]="username" name="username"
+                            required>
+                    </div>
+                    <div class="mb-3 position-relative">
+                        <label for="password" class="form-label">Password</label>
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control"
+                            [(ngModel)]="password" name="password" required>
+                        <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="show()"
+                            style="position: absolute; cursor: pointer; right: 1rem; top: 2.7rem;"></i>
+                    </div>
+                    <div *ngIf="loginErr" class="alert alert-danger small py-1">Invalid Credentials</div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
