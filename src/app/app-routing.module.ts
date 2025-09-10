@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'view-detail/:id', component: ViewFullDetailComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {path: '**', component: NotFoundComponent}
 ];
 

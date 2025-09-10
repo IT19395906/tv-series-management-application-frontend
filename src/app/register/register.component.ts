@@ -4,13 +4,14 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: false,
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
-export class LoginComponent {
+export class RegisterComponent {
 
+  role: string = '0';
   username: string = '';
   password: string = '';
   loginErr: boolean = false;
@@ -21,20 +22,20 @@ export class LoginComponent {
     private authService: AuthService
   ) { }
 
-  login(): void {
+  register(): void {
     if (this.username.trim() == '' || this.password.trim() == '') {
       this.toastr.error('Please enter username and password', 'Error');
       return;
     }
 
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.register(this.username, this.password, this.role).subscribe(
       response => {
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('jwtToken', response.token);
-        this.router.navigate(['/home']);
+        this.toastr.success(response.message, 'Success');
+        localStorage.setItem('userType', this.role);
+        this.router.navigate(['/login']);
       },
       error => {
-        this.toastr.error('Login attempt failed', 'Error');
+        this.toastr.error('Register User Failed', 'Error');
         this.loginErr = true;
       }
     );
@@ -43,4 +44,5 @@ export class LoginComponent {
   show(): void {
     this.showPassword = !this.showPassword;
   }
+
 }

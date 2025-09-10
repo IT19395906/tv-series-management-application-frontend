@@ -12,6 +12,11 @@ export class AuthService {
   private readonly apiUrl = `http://localhost:8080/api/auth/`;
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<{ token: string }>(this.apiUrl + 'login', { username: username, password: password });
+    return this.http.post<any>(this.apiUrl + 'login', { username: username, password: password });
   }
+  
+  register(username: string, password: string, role: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'register', { username: username, password: password, role: role });
+  }
+  
 }

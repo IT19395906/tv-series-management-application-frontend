@@ -60,6 +60,7 @@ import { ViewFullDetailComponent } from './view-full-detail/view-full-detail.com
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
+import { RegisterComponent } from './register/register.component';
 
 const icons = {
   Facebook,
@@ -96,7 +97,8 @@ const icons = {
     ViewFullDetailComponent,
     LoginComponent,
     NotFoundComponent,
-    SearchComponent
+    SearchComponent,
+    RegisterComponent
   ],
   imports: [
     MatMenuModule,
