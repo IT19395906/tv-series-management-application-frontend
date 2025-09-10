@@ -17,7 +17,8 @@
                             style="position: absolute; cursor: pointer; right: 1rem; top: 2.7rem;"></i>
                     </div>
                     <div *ngIf="loginErr" class="alert alert-danger small py-1">Invalid Credentials</div>
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <small> <a [routerLink]="['/register']">Forgot Password ?</a></small>
+                    <button type="submit" class="mt-2 btn btn-primary w-100">Login</button>
                 </form>
             </div>
         </div>
