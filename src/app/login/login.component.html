@@ -5,6 +5,13 @@
                 <h4 class="text-center mb-4">Login</h4>
                 <form (ngSubmit)="login()">
                     <div class="mb-3">
+                        <label for="role" class="form-label">User Type</label>
+                        <select id="role" class="form-select" [(ngModel)] ="role" name="role" required>
+                            <option value="0" selected>Normal User</option>
+                            <option value="1">Admin</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" id="username" class="form-control" [(ngModel)]="username" name="username"
                             required>

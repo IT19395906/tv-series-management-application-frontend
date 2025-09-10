@@ -11,6 +11,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginComponent {
 
+  role: string = '0';
   username: string = '';
   password: string = '';
   loginErr: boolean = false;
@@ -32,6 +33,7 @@ export class LoginComponent {
         response => {
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('jwtToken', response.token);
+          localStorage.setItem('userType', this.role);
           this.router.navigate(['/home']);
         },
         error => {
