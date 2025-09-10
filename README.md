@@ -1,59 +1,74 @@
-# TvSeriesManagementApplication
+# 📺 TV Series Management System (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+This is an **Angular-based web application** designed for managing TV series with **role-based access control** and **JWT authentication**. The application allows different types of users (Admins and Normal Users) to interact with the system based on their roles.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🔐 Features
+
+### ✅ Authentication & Authorization
+
+- **JWT-based authentication**
+- **AuthGuard** to protect routes and restrict access for unauthorized users
+- **Role-based access control** for Admin and Normal users
+
+---
+
+## 👤 User Roles
+
+### 🔸 Admin
+
+- Add new TV series
+- View all added TV series
+- Filter/search TV series with multiple filters
+- Update existing TV series data
+- Delete TV series from the system
+
+### 🔹 Normal User
+
+- View all available TV series
+- Search TV series by title
+- View full details of a selected TV series
+
+---
+
+## 🛠️ Technologies & Tools Used
+
+- **Angular**
+- **JWT (JSON Web Tokens)**
+- **Angular Material Components**
+  - `mat-auto-complete`
+  - `mat-chip-list`
+  - `mat-radio-group`
+  - `mat-date-range-input`
+  - `mat-error`
+- **Bootstrap**
+- **Material UI**
+- **Reactive Forms** with built-in validators
+- **Lazy Loading** for optimized module loading
+- **Paginated API responses** from backend
+- **Custom 404 Page** for invalid routes
+- **Login Page**
+
+---
+
+## 📸 UI Snapshots
+
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js
+- Angular CLI
+- Backend API with JWT support
+
+### Installation
 
 ```bash
+git clone https://github.com/IT19395906/tv-series-management-application-frontend.git
+cd your-repo-name
+npm install
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
