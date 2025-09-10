@@ -65,6 +65,7 @@ export class ViewAllItemsComponent {
     'action'
   ];
   pageSizeOptions: number[] = [5, 10, 25];
+  previousSearchedDto: SearchDto | null = null;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private fb: FormBuilder,
@@ -151,20 +152,8 @@ export class ViewAllItemsComponent {
       return;
     }
 
-    this.tvSeriesService.getTvSeriesBySearch(searchDto).subscribe({
-      next: (response) => {
-        if (response.data) {
-          this.tvSeriesDataSource.data = response.data;
-        }
-      },
-      error: (error) => {
-        const errorMessage = error?.error?.message || error.message || 'Search Failed';
-        this.toastr.error(errorMessage, 'Error');
-        this.tvSeriesDataSource.data = [];
-      },
-      complete: () => { }
-    })
-
+    this.previousSearchedDto = searchDto;
+    this.getDataBySearch(searchDto);
   }
 
   get addedDateForm(): FormGroup {
@@ -180,13 +169,34 @@ export class ViewAllItemsComponent {
   }
 
   editRecord(element: any) {
-    this.dialog.open(ViewSingleItemComponent,
+    const dialogRef = this.dialog.open(ViewSingleItemComponent,
       {
         width: '50vw',
         maxWidth: '100vw',
         data: element
       }
     );
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.isUpdated && this.previousSearchedDto) {
+        this.getDataBySearch(this.previousSearchedDto);
+      }
+    })
+  }
+
+  getDataBySearch(searchDto: SearchDto) {
+    this.tvSeriesService.getTvSeriesBySearch(searchDto).subscribe({
+      next: (response) => {
+        if (response.data) {
+          this.tvSeriesDataSource.data = response.data;
+        }
+      },
+      error: (error) => {
+        const errorMessage = error?.error?.message || error.message || 'Search Failed';
+        this.toastr.error(errorMessage, 'Error');
+        this.tvSeriesDataSource.data = [];
+      },
+      complete: () => { }
+    })
   }
 
   deleteRecord(element: any) {

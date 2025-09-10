@@ -132,10 +132,12 @@ export class ViewSingleItemComponent implements OnInit {
           img: this.detailsForm.get('img')?.value,
           trailer: this.detailsForm.get('trailer')?.value,
         };
-        this.tvSeriesService.addTvSeriesData(updateDto).subscribe({
+        this.tvSeriesService.updateTvSeriesData(updateDto,this.data.id).subscribe({
           next: (response) => {
-            this.toastr.success('TV Series updated successfully', 'Success');
-            this.dialogRef.close(true);
+            if(response.message == 'TV Series Updated Successfully'){
+              this.toastr.success(response.message, 'Success');
+              this.dialogRef.close({isUpdated: true});
+            }
           },
           error: (error) => {
             this.toastr.error('Failed to update TV Series', 'Error');
