@@ -124,7 +124,7 @@ export class ViewSingleItemComponent implements OnInit {
           language: this.detailsForm.get('language')?.value,
           description: this.detailsForm.get('description')?.value,
           releasedDate: this.detailsForm.get('releasedDate')?.value,
-          tags: [],
+          tags: this.data?.tags,
           imdb: this.detailsForm.get('imdb')?.value,
           ro: this.detailsForm.get('ro')?.value,
           seasons: this.detailsForm.get('seasons')?.value,
