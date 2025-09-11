@@ -4,6 +4,75 @@
     gap: 1rem;
 }
 
+.carousel {
+    display: flex;
+    margin: 3em auto;
+    gap: 1em;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-marker-group: after;
+}
+
+.carousel::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.Imagecard {
+    height: 12em;
+    border-radius: 1em;
+}
+
+.Imagecard::scroll-marker:target-current {
+    background-color: rgb(201, 134, 232);
+}
+
+.Imagecard::scroll-marker {
+    content: '';
+    width: 0.6em;
+    height: 0.6em;
+    background-color: rgb(90, 14, 111);
+    border-radius: 50%;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: rgb(116, 10, 145);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.scroll-btn:hover {
+  background-color: rgb(165, 62, 194);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 8px rgba(0, 174, 255, 0.5);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.scroll-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 90%;
+    justify-self: center;
+
+
+}
+
 @media (max-width: 768px) {
     .info-list {
         grid-template-columns: 1fr;

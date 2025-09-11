@@ -12,7 +12,7 @@ app-header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;/* Make sure header is above the sidebar */
+  z-index: 3;/* Make sure header is above the sidebar */
   background: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }

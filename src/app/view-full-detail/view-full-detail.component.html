@@ -23,3 +23,11 @@
 <div *ngIf="data.trailer">
   <iframe width="560" height="315" [src]="sanitizeUrl(data.trailer)" frameborder="0" allowfullscreen></iframe>
 </div>
+
+<div class="carousel-wrapper">
+  <button class="scroll-btn" id="right" style="right: -2em;"><i class="fa fa-arrow-right"></i></button>
+  <div class="carousel">
+    <img class="Imagecard"  *ngFor="let img of imageArray" [src]="img" />  
+  </div>
+  <button class="scroll-btn" id="left" style="left: -2em;"><i class="fa fa-arrow-left"></i></button>
+</div>
