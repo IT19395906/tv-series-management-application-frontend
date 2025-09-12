@@ -50,10 +50,15 @@ export class TvSeriesService {
     const params = { page: page, size: size };
     return this.http.get<any>(this.apiUrl + 'getAll', { params });
   }
-
+  
   updateTvSeriesData(updateDto: SubmitDto, id:number):Observable<any>{
     const token = localStorage.getItem('jwtToken');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put<any>(this.apiUrl + 'update/' + id, updateDto, {headers})
+  }
+  
+  search(keyword:string): Observable<any> {
+    const params = { keyword: keyword};
+    return this.http.get<any>(this.apiUrl + 'search', {params})
   }
 }

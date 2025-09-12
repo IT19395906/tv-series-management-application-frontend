@@ -1,9 +1,20 @@
 <div class="container">
     <h2 class="text-center mb-3 fw-bold">Tv Series Available</h2>
+    <form [formGroup]="searchForm">
+        <mat-form-field appearance="outline" class="minisearchfield mx-auto d-block mb-4 w-50">
+            <mat-label>Search</mat-label>
+            <input matInput type="search" minlength="2" maxlength="40" placeholder="What are you looking for?"
+                formControlName="search" />
+            <button matSuffix mat-icon-button class="me-3" type="submit" (click)="search()"><i
+                    class="fa fa-search"></i></button>
+            <mat-error *ngIf="searchForm.get('search')?.hasError('required')">Please enter keyword</mat-error>
+            <mat-error *ngIf="searchForm.get('search')?.hasError('minlength')">Please enter at least 2
+                letters</mat-error>
+        </mat-form-field>
+    </form>
     <div class="row g-5">
         <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let data of tvseries">
-            <div style="cursor: pointer;" class="card h-100 shadow-lg"
-                [routerLink]="['/view-detail',data.id]">
+            <div style="cursor: pointer;" class="card h-100 shadow-lg" [routerLink]="['/view-detail',data.id]">
                 <img [src]="data.img" loading="lazy" class="card-img-top" alt="{{data.title}}"
                     onerror="this.src='assets/default-image.jpg';">
                 <div class="card-body">

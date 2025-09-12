@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TvSeriesService } from '../service/tv-series.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -15,8 +16,10 @@ export class SearchComponent {
   totalPages: number = 0;
   currentPage: number = 1;
   pageSize: number = 8;
+  searchForm!: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
     private tvSeriesService: TvSeriesService,
@@ -26,6 +29,13 @@ export class SearchComponent {
 
   ngOnInit(): void {
     this.getAll();
+    this.initSearchForm();
+  }
+
+  initSearchForm(): void {
+    this.searchForm = this.fb.group({
+      search: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
+    });
   }
 
   getAll(): void {
@@ -42,5 +52,21 @@ export class SearchComponent {
       },
       complete: () => { }
     })
+  }
+
+  search(): void {
+    if (this.searchForm.invalid || this.searchForm.get('search')?.value.trim() == '') {
+      return;
+    }
+
+    this.tvSeriesService.search(this.searchForm.get('search')?.value.trim().toLowerCase()).subscribe(
+      (response) => {
+        this.tvseries = response;
+      },
+      (error) => {
+        const errorMessage = error?.error?.message || 'Search Failed';
+        this.toastr.error(errorMessage, 'Error');
+      }
+    )
   }
 }
