@@ -38,21 +38,26 @@ app-footer {
 }
 
 main {
-  margin-left: 250px;  /* Offset content to avoid overlap with the sidebar */
-  margin-top: 60px;  /* Offset content below the header */
+  margin-left: 200px;
+  /* Offset content to avoid overlap with the sidebar */
+  margin-top: 60px;
+  /* Offset content below the header */
   padding: 20px;
   margin-bottom: 40px;
-  min-height: calc(100vh - 100px);  /* Ensure content area takes the remaining height */
+  min-height: calc(100vh - 100px);
+  /* Ensure content area takes the remaining height */
   flex: 1;
   overflow-y: auto;
 }
 
 @media (max-width: 1024px) {
-  app-sidebar {
-    width: 200px;    /* Adjust sidebar width on smaller screens */
-  }
-
   main {
-    margin-left: 0;    /* Adjust content position for smaller screens */
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 80px;
   }
 }
