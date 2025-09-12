@@ -28,7 +28,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.authService.register(this.username, this.password, this.role).subscribe(
+    this.authService.register(this.username.trim(), this.password, this.role).subscribe(
       response => {
         this.toastr.success(response.message, 'Success');
         localStorage.setItem('userType', this.role);

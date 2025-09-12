@@ -3,13 +3,11 @@
     <form [formGroup]="searchForm">
         <mat-form-field appearance="outline" class="minisearchfield mx-auto d-block mb-4 w-50">
             <mat-label>Search</mat-label>
-            <input matInput type="search" minlength="2" maxlength="40" placeholder="What are you looking for?"
-                formControlName="search" />
-            <button matSuffix mat-icon-button class="me-3" type="submit" (click)="search()"><i
-                    class="fa fa-search"></i></button>
+            <input matInput type="search" minlength="2" maxlength="40" placeholder="What are you looking for?" formControlName="search" />
+            <button matSuffix mat-icon-button class="me-3" type="submit" (click)="search()"><i class="fa fa-search"></i>
+            </button>
             <mat-error *ngIf="searchForm.get('search')?.hasError('required')">Please enter keyword</mat-error>
-            <mat-error *ngIf="searchForm.get('search')?.hasError('minlength')">Please enter at least 2
-                letters</mat-error>
+            <mat-error *ngIf="searchForm.get('search')?.hasError('minlength')">Please enter at leaset 2 letters</mat-error>
         </mat-form-field>
     </form>
     <div class="row g-5">

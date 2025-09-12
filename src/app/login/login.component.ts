@@ -27,7 +27,7 @@ export class LoginComponent {
       return;
     }
 
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.login(this.username.trim(), this.password).subscribe(
       response => {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('jwtToken', response.token);
