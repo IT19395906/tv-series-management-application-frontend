@@ -17,6 +17,8 @@ export class SearchComponent {
   currentPage: number = 1;
   pageSize: number = 8;
   searchForm!: FormGroup;
+  showGenre: boolean = false;
+  categories: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +32,18 @@ export class SearchComponent {
   ngOnInit(): void {
     this.getAll();
     this.initSearchForm();
+    this.loadCategories();
+  }
+
+  loadCategories() {
+    this.tvSeriesService.getAllCategories().subscribe({
+      next: (response) => {
+        this.categories = response;
+      },
+      error: (error) => {
+        this.toastr.error('Retrieve categories failed', 'Error');
+      }
+    })
   }
 
   initSearchForm(): void {
@@ -68,5 +82,20 @@ export class SearchComponent {
         this.toastr.error(errorMessage, 'Error');
       }
     )
+  }
+
+  latestReleased() {
+    this.tvSeriesService.latestReleased().subscribe(
+      (response) => {
+        this.tvseries = response;
+      },
+      (error) => {
+        this.toastr.error('Load Latest Released Tv Series Failed', 'Error');
+      }
+    )
+  }
+
+  navigate(data: any) {
+    this.router.navigate(['/view-detail', data.id], { state: { data } });
   }
 }

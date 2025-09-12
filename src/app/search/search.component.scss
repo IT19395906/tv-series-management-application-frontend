@@ -3,3 +3,25 @@
 .minisearchfield {
     @include mat.form-field-density(-3);
 }
+
+
+
+
+.hover-wrapper {
+  position: relative;
+}
+
+.hover-popup {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; gap: clamp(0.5rem, 2vw, 2rem);
+  position: absolute;
+  top: 100%;
+  background-color: #000000;
+  border: none;
+  padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  opacity: 70%;
+  border-radius: clamp(0.5rem, 1vw, 1rem);
+}

@@ -3,16 +3,32 @@
     <form [formGroup]="searchForm">
         <mat-form-field appearance="outline" class="minisearchfield mx-auto d-block mb-4 w-50">
             <mat-label>Search</mat-label>
-            <input matInput type="search" minlength="2" maxlength="40" placeholder="What are you looking for?" formControlName="search" />
+            <input matInput type="search" minlength="2" maxlength="40" placeholder="What are you looking for?"
+                formControlName="search" />
             <button matSuffix mat-icon-button class="me-3" type="submit" (click)="search()"><i class="fa fa-search"></i>
             </button>
             <mat-error *ngIf="searchForm.get('search')?.hasError('required')">Please enter keyword</mat-error>
-            <mat-error *ngIf="searchForm.get('search')?.hasError('minlength')">Please enter at leaset 2 letters</mat-error>
+            <mat-error *ngIf="searchForm.get('search')?.hasError('minlength')">Please enter at leaset 2
+                letters</mat-error>
         </mat-form-field>
     </form>
+    <nav class="hover-wrapper mb-3 d-flex justify-content-center bg-light p-2">
+        <button class="btn btn-outline-danger btn-sm mx-2" (click)="latestReleased()">Latest Released</button>
+        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
+            (mouseleave)="showGenre = false" (click)="showGenre = true">Genre</button>
+        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
+            (mouseleave)="showGenre = false" (click)="showGenre = true">Years</button>
+        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
+            (mouseleave)="showGenre = false" (click)="showGenre = true">Languages</button>
+        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
+            (mouseleave)="showGenre = false" (click)="showGenre = true">Collections</button>
+        <div *ngIf="showGenre" class="hover-popup">
+            <button *ngFor="let category of categories.sort()">{{category}}</button>
+        </div>
+    </nav>
     <div class="row g-5">
         <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let data of tvseries">
-            <div style="cursor: pointer;" class="card h-100 shadow-lg" [routerLink]="['/view-detail',data.id]">
+            <div style="cursor: pointer;" class="card h-100 shadow-lg" (click)="navigate(data)">
                 <img [src]="data.img" loading="lazy" class="card-img-top" alt="{{data.title}}"
                     onerror="this.src='assets/default-image.jpg';">
                 <div class="card-body">
