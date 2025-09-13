@@ -8,7 +8,7 @@ body {
 }
 
 app-header {
-  height: 60px;/* Adjust the height of your header */
+  height: clamp(50px, 7.5vh, 60px);/* Adjust the height of header */
   position: fixed;
   top: 0;
   width: 100%;
@@ -18,9 +18,9 @@ app-header {
 }
 
 app-sidebar {
-  width: 200px;  /* Sidebar width */
+  width: clamp(80px, 15vw, 200px);  /* Sidebar width */
   position: fixed;
-  top: 60px;  /* Position the sidebar below the header */
+  top: clamp(50px, 7.5vh, 60px); /* Position the sidebar below the header */
   left: 0;
   bottom: 0;
   z-index: 1;  /* Sidebar will sit below the header */
@@ -28,7 +28,7 @@ app-sidebar {
 }
 
 app-footer {
-  height: 40px;  /* Adjust footer height */
+  height: clamp(30px, 5.5vh, 40px);  /* Adjust footer height */
   background: #333;
   color: white;
   position: fixed;
@@ -38,26 +38,11 @@ app-footer {
 }
 
 main {
-  margin-left: 200px;
-  /* Offset content to avoid overlap with the sidebar */
-  margin-top: 60px;
-  /* Offset content below the header */
-  padding: 20px;
-  margin-bottom: 40px;
-  min-height: calc(100vh - 100px);
-  /* Ensure content area takes the remaining height */
+  margin-left: clamp(80px, 15vw, 200px);/* Offset content to avoid overlap with the sidebar */
+  margin-top: clamp(50px, 7.5vh, 60px); /* Offset content below the header */
+  padding:clamp(12px, 2vw, 20px);      
+  margin-bottom: clamp(30px, 5.5vh, 40px);
+  min-height: calc(100vh - clamp(80px, 13vh, 100px));/* Ensure content area takes the remaining height */
   flex: 1;
   overflow-y: auto;
-}
-
-@media (max-width: 1024px) {
-  main {
-    margin-left: 80px;
-  }
-}
-
-@media (max-width: 768px) {
-  main {
-    margin-left: 80px;
-  }
 }
