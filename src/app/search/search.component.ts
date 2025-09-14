@@ -17,8 +17,12 @@ export class SearchComponent {
   currentPage: number = 1;
   pageSize: number = 8;
   searchForm!: FormGroup;
-  showGenre: boolean = false;
+  activeDropdown: string | null = null;
   categories: string[] = [];
+  languages: string[] = [];
+  years: string[] = [];
+  collections: string[] = ['sfgdfhd','hdciubhuc'];
+  dropdownItems: any[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -33,17 +37,53 @@ export class SearchComponent {
     this.getAll();
     this.initSearchForm();
     this.loadCategories();
+    this.loadLanguages();
+    this.loadYears();
   }
 
   loadCategories() {
     this.tvSeriesService.getAllCategories().subscribe({
       next: (response) => {
         this.categories = response;
+        this.updateDropdownItems();
       },
       error: (error) => {
         this.toastr.error('Retrieve categories failed', 'Error');
       }
     })
+  }
+
+  loadLanguages() {
+    this.tvSeriesService.getAllLanguages().subscribe({
+      next: (response) => {
+        this.languages = response;
+        this.updateDropdownItems();
+      },
+      error: (error) => {
+        this.toastr.error('Retrieve languages failed', 'Error');
+      }
+    })
+  }
+
+  loadYears() {
+    this.tvSeriesService.getAllYears().subscribe({
+      next: (response) => {
+        this.years = response;
+        this.updateDropdownItems();
+      },
+      error: (error) => {
+        this.toastr.error('Retrieve years failed', 'Error');
+      }
+    })
+  }
+
+  updateDropdownItems() {
+    this.dropdownItems = [
+      { key: 'genre', label: 'Genre', values: this.categories },
+      { key: 'years', label: 'Years', values: this.years },
+      { key: 'languages', label: 'Languages', values: this.languages },
+      { key: 'collections', label: 'Collections', values: this.collections },
+    ];
   }
 
   initSearchForm(): void {

@@ -46,6 +46,10 @@ export class TvSeriesService {
     return this.http.get<string[]>(this.apiUrl + 'languages', { headers });
   }
 
+  getAllYears(): Observable<any> {
+    return this.http.get<string[]>(this.apiUrl + 'years');
+  }
+
   getAllTvSeries(page: number, size: number): Observable<any> {
     const params = { page: page, size: size };
     return this.http.get<any>(this.apiUrl + 'getAll', { params });

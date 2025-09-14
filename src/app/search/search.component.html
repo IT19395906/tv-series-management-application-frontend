@@ -14,17 +14,13 @@
     </form>
     <nav class="hover-wrapper mb-3 d-flex justify-content-center bg-light p-2">
         <button class="btn btn-outline-danger btn-sm mx-2" (click)="latestReleased()">Latest Released</button>
-        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
-            (mouseleave)="showGenre = false" (click)="showGenre = true">Genre</button>
-        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
-            (mouseleave)="showGenre = false" (click)="showGenre = true">Years</button>
-        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
-            (mouseleave)="showGenre = false" (click)="showGenre = true">Languages</button>
-        <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="showGenre = true"
-            (mouseleave)="showGenre = false" (click)="showGenre = true">Collections</button>
-        <div *ngIf="showGenre" class="hover-popup">
-            <button *ngFor="let category of categories.sort()">{{category}}</button>
-        </div>
+        <ng-container *ngFor="let item of dropdownItems">
+            <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="activeDropdown = item.key"
+                (mouseleave)="activeDropdown = null" (click)="activeDropdown = item.key">{{item.label}}</button>
+            <div *ngIf="activeDropdown === item.key" class="hover-popup">
+                <button *ngFor="let value of item.values.sort()">{{value}}</button>
+            </div>
+        </ng-container>
     </nav>
     <div class="row g-5">
         <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let data of tvseries">
