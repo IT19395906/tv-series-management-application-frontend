@@ -15,10 +15,10 @@
     <nav class="hover-wrapper mb-3 d-flex justify-content-center bg-light p-2">
         <button class="btn btn-outline-danger btn-sm mx-2" (click)="latestReleased()">Latest Released</button>
         <ng-container *ngFor="let item of dropdownItems">
-            <button class="btn btn-outline-danger btn-sm mx-2" (mouseenter)="activeDropdown = item.key"
-                (mouseleave)="activeDropdown = null" (click)="activeDropdown = item.key">{{item.label}}</button>
-            <div *ngIf="activeDropdown === item.key" class="hover-popup">
-                <button *ngFor="let value of item.values.sort()">{{value}}</button>
+            <button class="btn btn-outline-danger btn-sm mx-2" (click)="toggleContent(item.key)">{{item.label}}</button>
+            <div *ngIf="activeDropdown === item.key" class="hover-popup" (mouseenter)="keepContent(item.key)"
+                (mouseleave)="closeContent()">
+                <button *ngFor="let value of item.values.sort()" (click)="onBtn(value)">{{value}}</button>
             </div>
         </ng-container>
     </nav>

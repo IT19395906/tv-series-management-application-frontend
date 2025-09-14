@@ -21,7 +21,7 @@ export class SearchComponent {
   categories: string[] = [];
   languages: string[] = [];
   years: string[] = [];
-  collections: string[] = ['sfgdfhd','hdciubhuc'];
+  collections: string[] = ['sfgdfhd', 'hdciubhuc'];
   dropdownItems: any[] = [];
 
   constructor(
@@ -75,6 +75,28 @@ export class SearchComponent {
         this.toastr.error('Retrieve years failed', 'Error');
       }
     })
+  }
+
+
+  toggleContent(key: string) {
+    if (this.activeDropdown === key) {
+      this.activeDropdown = null;
+    } else {
+      this.activeDropdown = key;
+    }
+  }
+
+  keepContent(key: string) {
+    this.activeDropdown = key;
+  }
+
+  closeContent() {
+    this.activeDropdown = null;
+  }
+
+  onBtn(value:string){
+
+    this.activeDropdown = null;
   }
 
   updateDropdownItems() {
