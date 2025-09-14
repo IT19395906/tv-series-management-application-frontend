@@ -94,10 +94,6 @@ export class SearchComponent {
     this.activeDropdown = null;
   }
 
-  onBtn(value:string){
-
-    this.activeDropdown = null;
-  }
 
   updateDropdownItems() {
     this.dropdownItems = [
@@ -128,6 +124,70 @@ export class SearchComponent {
       },
       complete: () => { }
     })
+  }
+
+  onBtn(value: string, item: any) {
+    switch (item.key) {
+      case 'genre':
+        this.getTvSeriesByCategory(value);
+        break;
+      case 'languages':
+        this.getTvSeriesByLanguage(value);
+        break;
+      case 'years':
+        this.getTvSeriesByYear(value);
+        break;
+      case 'collections':
+        this.getTvSeriesByCollection(value);
+        break;
+      default: throw new Error
+
+    }
+    this.activeDropdown = null;
+  }
+
+  getTvSeriesByCollection(value: string) {
+    this.tvSeriesService.getTvSeriesByCollection(value).subscribe(
+      (response) => {
+
+      },
+      (error) => {
+        this.toastr.error('get data failed', 'Error');
+      }
+    )
+  }
+
+  getTvSeriesByYear(value: string) {
+    this.tvSeriesService.getTvSeriesByYear(value).subscribe(
+      (response) => {
+
+      },
+      (error) => {
+        this.toastr.error('get data failed', 'Error');
+      }
+    )
+  }
+
+  getTvSeriesByLanguage(value: string) {
+    this.tvSeriesService.getTvSeriesByLanguage(value).subscribe(
+      (response) => {
+
+      },
+      (error) => {
+        this.toastr.error('get data failed', 'Error');
+      }
+    )
+  }
+
+  getTvSeriesByCategory(value: string) {
+    this.tvSeriesService.getTvSeriesByCategory(value).subscribe(
+      (response) => {
+
+      },
+      (error) => {
+        this.toastr.error('get data failed', 'Error');
+      }
+    )
   }
 
   search(): void {

@@ -52,6 +52,22 @@ export class TvSeriesService {
     return this.http.get<string[]>(this.apiUrl + 'years', { headers });
   }
 
+  getTvSeriesByCategory(value: string): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'getByCategory/' + value);
+  }
+
+  getTvSeriesByLanguage(value: string): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'getByLanguage/' + value);
+  }
+  
+  getTvSeriesByYear(value: string): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'getByYear/' + value);
+  }
+
+  getTvSeriesByCollection(value: string): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'getByCollection/' + value);
+  }
+
   getAllTvSeries(page: number, size: number): Observable<any> {
     const params = { page: page, size: size };
     return this.http.get<any>(this.apiUrl + 'getAll', { params });
