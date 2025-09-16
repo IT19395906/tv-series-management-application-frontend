@@ -59,8 +59,8 @@ export class TvSeriesService {
   getTvSeriesByLanguage(value: string): Observable<any> {
     return this.http.get<any>(this.apiUrl + 'getByLanguage/' + value);
   }
-  
-  getTvSeriesByYear(value: string): Observable<any> {
+
+  getTvSeriesByYear(value: number): Observable<any> {
     return this.http.get<any>(this.apiUrl + 'getByYear/' + value);
   }
 

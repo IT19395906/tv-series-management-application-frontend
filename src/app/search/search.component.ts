@@ -158,7 +158,7 @@ export class SearchComponent {
   }
 
   getTvSeriesByYear(value: string) {
-    this.tvSeriesService.getTvSeriesByYear(value).subscribe(
+    this.tvSeriesService.getTvSeriesByYear(Number(value)).subscribe(
       (response) => {
         this.tvseries = response;
       },
