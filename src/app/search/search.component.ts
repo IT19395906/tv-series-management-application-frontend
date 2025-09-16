@@ -149,10 +149,10 @@ export class SearchComponent {
   getTvSeriesByCollection(value: string) {
     this.tvSeriesService.getTvSeriesByCollection(value).subscribe(
       (response) => {
-
+        this.tvseries = response;
       },
       (error) => {
-        this.toastr.error('get data failed', 'Error');
+        this.toastr.error('Retreive Tv Series Failed', 'Error');
       }
     )
   }
@@ -160,10 +160,10 @@ export class SearchComponent {
   getTvSeriesByYear(value: string) {
     this.tvSeriesService.getTvSeriesByYear(value).subscribe(
       (response) => {
-
+        this.tvseries = response;
       },
       (error) => {
-        this.toastr.error('get data failed', 'Error');
+        this.toastr.error('Retreive Tv Series Failed', 'Error');
       }
     )
   }
@@ -171,10 +171,10 @@ export class SearchComponent {
   getTvSeriesByLanguage(value: string) {
     this.tvSeriesService.getTvSeriesByLanguage(value).subscribe(
       (response) => {
-
+        this.tvseries = response;
       },
       (error) => {
-        this.toastr.error('get data failed', 'Error');
+        this.toastr.error('Retreive Tv Series Failed', 'Error');
       }
     )
   }
@@ -182,10 +182,10 @@ export class SearchComponent {
   getTvSeriesByCategory(value: string) {
     this.tvSeriesService.getTvSeriesByCategory(value).subscribe(
       (response) => {
-
+        this.tvseries = response;
       },
       (error) => {
-        this.toastr.error('get data failed', 'Error');
+        this.toastr.error('Retreive Tv Series Failed', 'Error');
       }
     )
   }
