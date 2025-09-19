@@ -61,6 +61,8 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
+import { UpcomingComponent } from './upcoming/upcoming.component';
+import { ContactComponent } from './contact/contact.component';
 
 const icons = {
   Facebook,
@@ -98,7 +100,9 @@ const icons = {
     LoginComponent,
     NotFoundComponent,
     SearchComponent,
-    RegisterComponent
+    RegisterComponent,
+    UpcomingComponent,
+    ContactComponent
   ],
   imports: [
     MatMenuModule,

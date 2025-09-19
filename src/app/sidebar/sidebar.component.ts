@@ -56,7 +56,33 @@ export const ROUTES: SidebarValues[] = [
     submenu: [],
     disabled: false,
     permission: ''
-  }
+  },
+  {
+    path: 'upcoming',
+    title: 'Upcoming',
+    iconType: 'fa',
+    icon: 'fa-calendar-alt',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [],
+    disabled: false,
+    permission: ''
+  },
+  {
+    path: 'contact',
+    title: 'Contact Us',
+    iconType: 'fa',
+    icon: 'fa-envelope',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [],
+    disabled: false,
+    permission: ''
+  },
 ];
 
 @Component({

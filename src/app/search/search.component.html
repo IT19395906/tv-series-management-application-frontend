@@ -21,7 +21,7 @@
                 <button *ngFor="let value of item.values.sort()" (click)="onBtn(value,item)">{{value}}</button>
             </div>
         </ng-container>
-    </nav>
+    </nav><h5 class="text-end">{{tvseries.length}} Records</h5>
     <div class="row g-5">
         <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let data of tvseries">
             <div style="cursor: pointer;" class="card h-100 shadow-lg" (click)="navigate(data)">
