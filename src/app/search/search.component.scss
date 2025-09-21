@@ -26,6 +26,14 @@
   border-radius: clamp(0.5rem, 1vw, 1rem);
 }
 
+.status-circle {
+  display: inline-block;
+  width: clamp(0.5rem, 1vw, 0.625rem);
+  height: clamp(0.5rem, 1vw, 0.625rem);
+  border-radius: 50%;
+  margin-right: clamp(0.25rem, 0.8vw, 0.5rem);
+}
+
 .card:hover {
   transform: scale(1.05) translateY(-6px);
   transition: transform 0.3s ease, background-color 0.3s ease;
