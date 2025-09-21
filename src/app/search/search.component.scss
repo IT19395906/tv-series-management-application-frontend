@@ -25,3 +25,9 @@
   opacity: 70%;
   border-radius: clamp(0.5rem, 1vw, 1rem);
 }
+
+.card:hover {
+  transform: scale(1.05) translateY(-6px);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: #f0f0f0bf;
+}
