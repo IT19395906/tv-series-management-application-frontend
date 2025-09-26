@@ -87,4 +87,10 @@ export class TvSeriesService {
   latestReleased(): Observable<any> {
     return this.http.get<any>(this.apiUrl + 'latest');
   }
+
+  downloadCSV(): Observable<Blob> {
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.apiUrl + 'export/csv', { headers, responseType: 'blob' });
+  }
 }
