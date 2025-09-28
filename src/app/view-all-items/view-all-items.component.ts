@@ -131,6 +131,22 @@ export class ViewAllItemsComponent {
     )
   }
 
+  downloadPdf() {
+    this.tvSeriesService.downloadPDF().subscribe(
+      (res:Blob) => {
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(res);
+        a.href = objectUrl;
+        a.download = 'Tv Series List.pdf';
+        a.click();
+        URL.revokeObjectURL(objectUrl);
+      },
+      (err) => {
+        this.toastr.error(err, 'Error');
+      }
+    )
+  }
+
   search() {
     const category = this.searchForm.controls["category"].value;
     const title = this.searchForm.controls["title"].value?.trim();
