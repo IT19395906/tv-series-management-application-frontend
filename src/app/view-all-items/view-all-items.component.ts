@@ -117,7 +117,7 @@ export class ViewAllItemsComponent {
 
   downloadCsv() {
     this.tvSeriesService.downloadCSV().subscribe(
-      (res:Blob) => {
+      (res: Blob) => {
         const a = document.createElement('a');
         const objectUrl = URL.createObjectURL(res);
         a.href = objectUrl;
@@ -133,11 +133,27 @@ export class ViewAllItemsComponent {
 
   downloadPdf() {
     this.tvSeriesService.downloadPDF().subscribe(
-      (res:Blob) => {
+      (res: Blob) => {
         const a = document.createElement('a');
         const objectUrl = URL.createObjectURL(res);
         a.href = objectUrl;
         a.download = 'Tv Series List.pdf';
+        a.click();
+        URL.revokeObjectURL(objectUrl);
+      },
+      (err) => {
+        this.toastr.error(err, 'Error');
+      }
+    )
+  }
+  
+  downloadZip() {
+    this.tvSeriesService.downloadZIP().subscribe(
+      (res: Blob) => {
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(res);
+        a.href = objectUrl;
+        a.download = 'Tv Series List.zip';
         a.click();
         URL.revokeObjectURL(objectUrl);
       },

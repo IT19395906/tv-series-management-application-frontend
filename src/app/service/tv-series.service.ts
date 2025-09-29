@@ -99,4 +99,10 @@ export class TvSeriesService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(this.apiUrl + 'export/pdf', { headers, responseType: 'blob' });
   }
+
+  downloadZIP(): Observable<Blob> {
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.apiUrl + 'export/zip', { headers, responseType: 'blob' });
+  }
 }
