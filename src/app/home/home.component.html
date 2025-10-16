@@ -1,5 +1,6 @@
 <div class="container">
     <h2 class="text-center mb-3 fw-bold">Tv Series Available</h2>
+                <h6 class="text-end">Total Records : {{totalElements}}</h6>
     <div class="row g-5">
         <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let data of tvseries">
             <div style="cursor: pointer;" class="card h-100 shadow-lg" (click)="navigate(data)"
