@@ -10,24 +10,24 @@
                     <label for='fname' class='form-label'><b>First Name*</b></label>
                     <input type='text' id='fname' name='fname' class='form-control' maxlength="50" required
                         placeholder='Enter First Name' formControlName="fname" />
-                    <mat-error class="small text-danger" *ngIf="contactUsForm.get('fname')?.hasError('required') && contactUsForm.get('fname')?.touched">First name is
-                        required</mat-error>
+                    <div class="small text-danger" *ngIf="contactUsForm.get('fname')?.hasError('required') && contactUsForm.get('fname')?.touched">First name is
+                        required</div>
                 </div>
 
                 <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
                     <label for='lname' class='form-label'><b>Last Name*</b></label>
                     <input type='text' id='lname' name='lname' class='form-control' maxlength="50" required
                         placeholder='Enter Last Name' formControlName="lname" />
-                    <mat-error class="small text-danger" *ngIf="contactUsForm.get('lname')?.hasError('required') && contactUsForm.get('lname')?.touched">Last name is
-                        required</mat-error>
+                    <div class="small text-danger" *ngIf="contactUsForm.get('lname')?.hasError('required') && contactUsForm.get('lname')?.touched">Last name is
+                        required</div>
                 </div>
 
                 <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
                     <label for='email' class='form-label'><b>Email*</b></label>
                     <input type='email' id='email' name='email' class='form-control' maxlength="50" required
                         placeholder='Enter Your Email' formControlName="email" />
-                    <mat-error class="small text-danger" *ngIf="contactUsForm.get('email')?.hasError('required') && contactUsForm.get('email')?.touched">Email is
-                        required</mat-error>
+                    <div class="small text-danger" *ngIf="contactUsForm.get('email')?.hasError('required') && contactUsForm.get('email')?.touched">Email is required</div>
+                    <div class="small text-danger" *ngIf="contactUsForm.get('email')?.hasError('email') && contactUsForm.get('email')?.touched">invalid email</div>
                 </div>
 
                 <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
@@ -40,13 +40,13 @@
                     <label for="content" class="form-label"><b>Content*</b></label>
                     <textarea id="content" name="content" class="form-control" required formControlName="content" style="resize:none;"
                         rows="5" placeholder="Enter Content of The Message"></textarea>
-                    <mat-error class="small text-danger" *ngIf="contactUsForm.get('content')?.hasError('required') && contactUsForm.get('content')?.touched">Content is
-                        required</mat-error>
+                    <div class="small text-danger" *ngIf="contactUsForm.get('content')?.hasError('required') && contactUsForm.get('content')?.touched">Content is
+                        required</div>
                 </div>
 
                 <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
                     <label for="file" class="form-label"><b>Uploads</b></label>
-                    <input type="file" id="file" name="file" class="form-control" accept="image/*, .txt, .doc, .docx" formControlName="file"/>
+                    <input type="file" id="file" name="file" class="form-control" accept="image/*, .txt, .doc, .docx" formControlName="file" (change)="onFileChange($event)"/>
                 </div>
 
                 <div class="text-center">

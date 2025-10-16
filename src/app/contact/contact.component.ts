@@ -26,12 +26,22 @@ export class ContactComponent {
     this.contactUsForm = this.fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required,Validators.email]],
       contact: [''],
       content: ['', Validators.required],
       file: [null]
     })
   }
+
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    
+    if(file){
+      this.contactUsForm.controls["file"].setValue(file);
+      this.contactUsForm.controls["file"].markAsTouched();
+    }
+  }
+
 
   onSubmit(): void {
 
