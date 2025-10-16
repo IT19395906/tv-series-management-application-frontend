@@ -1,5 +1,6 @@
 <div *ngIf="data.img" class="text-center">
-  <img style="height: 20rem;" [src]="data.img" alt="{{data.title}}" onerror="this.src='assets/default-image.jpg';" />
+  <img style="height: 20rem; border-radius: 1rem; box-shadow: rgba(0,0,0,0.3)-9px 8px 7px 0px;" [src]="data.img"
+    alt="{{data.title}}" onerror="this.src='assets/default-image.jpg';" />
 </div>
 
 <h2 class="mt-3">{{ data.title }}</h2>
@@ -27,7 +28,7 @@
 <div class="carousel-wrapper">
   <button class="scroll-btn" id="right" style="right: -2em;"><i class="fa fa-arrow-right"></i></button>
   <div class="carousel">
-    <img class="Imagecard"  *ngFor="let img of imageArray" [src]="img" />  
+    <img class="Imagecard" *ngFor="let img of imageArray" [src]="img" />
   </div>
   <button class="scroll-btn" id="left" style="left: -2em;"><i class="fa fa-arrow-left"></i></button>
 </div>

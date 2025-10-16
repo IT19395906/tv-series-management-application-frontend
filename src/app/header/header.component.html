@@ -19,5 +19,9 @@
                 <span class="userrole">Admin</span>
             </div>
         </li>
+        <li>
+            <div className="text-end"><button class="btn btn-dark mb-3" (click)="toggleTheme()">{{theme === 'light' ?
+                    '🌙 Dark' : '☀️ Light'}}</button></div>
+        </li>
     </ul>
 </nav>

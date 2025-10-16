@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   tvseries: any[] = [];
-  totalElements: number = 0;
    totalPages: number = 0;
   currentPage: number = 1;
   pageSize: number = 8;
@@ -33,7 +32,6 @@ export class HomeComponent {
         if (response.content) {
           this.tvseries = response.content;
           this.totalPages = response.totalPages;
-          this.totalElements = response.totalElements;
         }
       },
       error: (error) => {

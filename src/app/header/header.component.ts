@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   langStoreValue = '';
   defaultFlag = '';
   isOpenSidebar = true;
+  theme = 'light';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
+    document.body.classList.remove('light', 'dark');
     this.getUserDetails();
   }
 
@@ -77,6 +79,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       }
     } else {
     }
+  }
+
+  toggleTheme() {
+    document.body.classList.remove(this.theme);
+    this.theme = this.theme == 'light' ? 'dark' : 'light';
+    document.body.classList.add(this.theme);
+
   }
 
   confirmLogout() {
