@@ -34,14 +34,20 @@ export class ContactComponent {
   }
 
   onSubmit(): void {
+
+    if (this.contactUsForm.invalid) {
+      this.toastr.error('Invalid Form', 'Error');
+      return;
+    }
+    
     const submitDto = new FormData();
     submitDto.append("fname", this.contactUsForm.get('fname')?.value.trim());
     submitDto.append("lname", this.contactUsForm.get('lname')?.value.trim());
     submitDto.append("email", this.contactUsForm.get('email')?.value.trim());
-    submitDto.append("contact", this.contactUsForm.get('contanct')?.value);
+    submitDto.append("contact", this.contactUsForm.get('contact')?.value);
     submitDto.append("content", this.contactUsForm.get('content')?.value.trim());
     submitDto.append("file", this.contactUsForm.get('file')?.value);
-    
+
     this.tvSeriesService.addRequests(submitDto).subscribe({
       next: (response) => {
         if (response.message == "Request Sent Successfully") {
