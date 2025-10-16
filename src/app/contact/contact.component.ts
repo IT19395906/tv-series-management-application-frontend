@@ -34,7 +34,15 @@ export class ContactComponent {
   }
 
   onSubmit(): void {
-    this.tvSeriesService.addRequests({}).subscribe({
+    const submitDto = new FormData();
+    submitDto.append("fname", this.contactUsForm.get('fname')?.value.trim());
+    submitDto.append("lname", this.contactUsForm.get('lname')?.value.trim());
+    submitDto.append("email", this.contactUsForm.get('email')?.value.trim());
+    submitDto.append("contact", this.contactUsForm.get('contanct')?.value);
+    submitDto.append("content", this.contactUsForm.get('content')?.value.trim());
+    submitDto.append("file", this.contactUsForm.get('file')?.value);
+    
+    this.tvSeriesService.addRequests(submitDto).subscribe({
       next: (response) => {
         if (response.message == "Request Sent Successfully") {
           this.toastr.success('Request Sent Successfully', 'Success');

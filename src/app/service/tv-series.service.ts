@@ -106,7 +106,7 @@ export class TvSeriesService {
     return this.http.get(this.apiUrl + 'export/zip', { headers, responseType: 'blob' });
   }
 
-  addRequests(submitDto: any): Observable<any> {
+  addRequests(submitDto: FormData): Observable<any> {
     const token = localStorage.getItem('jwtToken');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<any>('http://localhost:8080/api/requests/contact', submitDto, { headers });
