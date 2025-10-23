@@ -53,14 +53,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (localStorage.getItem('theme')) {
-      this.renderer.addClass(
-        this.document.body,
-        localStorage.getItem('theme') as string
-      );
-    } else {
-    }
-
     if (localStorage.getItem('menuOption')) {
       this.renderer.addClass(
         this.document.body,
@@ -90,15 +82,19 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   confirmLogout() {
     Swal.fire({
-      title: 'Do you want to Logout?',
+      title: 'Are you sure want to logout ?',
 
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Log out',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
     }).then((result) => {
       if (result.value) {
+        localStorage.removeItem('jwtToken');
+        localStorage.setItem('isLoggedIn', 'false');
+        this.router.navigate(['/login']);
         // this.authService.authLogout();
       }
     });
