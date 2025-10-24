@@ -11,13 +11,9 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
   loggedInUserName: string = '';
-  camelCaseRole: string = '';
   userRole: string = '';
   isNavbarCollapsed = true;
-  flagvalue = '';
-  countryName = '';
-  langStoreValue = '';
-  defaultFlag = '';
+  isLoggedIn: any = null;
   isOpenSidebar = true;
   theme = 'light';
 
@@ -36,7 +32,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   getUserDetails() {
     const userDetailsString = sessionStorage.getItem('userDetails');
-
+    
     if (userDetailsString) {
       const userDetails = JSON.parse(userDetailsString);
 
@@ -44,15 +40,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.userRole = userDetails?.roleName;
 
       if (this.userRole) {
-        this.camelCaseRole = this.userRole
+        this.userRole = this.userRole
           .split('_')
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ');
+        }
       }
     }
-  }
-
-  ngAfterViewInit() {
+    
+    ngAfterViewInit() {
+    this.isLoggedIn = localStorage.getItem("jwtToken");
     if (localStorage.getItem('menuOption')) {
       this.renderer.addClass(
         this.document.body,

@@ -8,7 +8,7 @@
             </button>
 
             <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="confirmLogout()">
+                <button mat-menu-item *ngIf="isLoggedIn" (click)="confirmLogout()">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </mat-menu>
