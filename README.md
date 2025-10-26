@@ -53,8 +53,8 @@ This is an **Angular-based web application** designed for managing TV series wit
 ---
 
 ## 📸 UI Snapshots
-<img src="public/login1.png" alt="Login Page" width="600">
-
+<img src="public/login1.png" alt="Login Page" width="100">
+<img src="public/register1.png" alt="Login Page" width="100">
 ---
 
 ## 🚀 Getting Started
