@@ -53,8 +53,25 @@ This is an **Angular-based web application** designed for managing TV series wit
 ---
 
 ## 📸 UI Snapshots
-<img src="public/login1.png" alt="Login Page" width="100">
-<img src="public/register1.png" alt="Login Page" width="100">
+<img src="public/login1.png" width="150">
+<img src="public/register1.png" width="150">
+<img src="public/home1.png" width="150">
+<img src="public/home3.png" width="150">
+<img src="public/full1.png" width="150">
+<img src="public/full2.png" width="150">
+<img src="public/search2.png" width="150">
+<img src="public/genre1.png" width="150">
+<img src="public/year1.png" width="150">
+<img src="public/language1.png" width="150">
+<img src="public/add2.png" width="150">
+<img src="public/add3.png" width="150">
+<img src="public/view1.png" width="150">
+<img src="public/view2.png" width="150">
+<img src="public/update1.png" width="150">
+<img src="public/delete1.png" width="150">
+<img src="public/contact1.png" width="150">
+<img src="public/4042.png" width="150">
+<img src="public/theme.png" width="150">
 ---
 
 ## 🚀 Getting Started
