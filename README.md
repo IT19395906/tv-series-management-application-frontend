@@ -22,6 +22,7 @@ This is an **Angular-based web application** designed for managing TV series wit
 - View all added TV series
 - Filter/search TV series with multiple filters
 - Update existing TV series data
+- Partially update TV series data
 - Delete TV series from the system
 
 ### 🔹 Normal User
@@ -29,8 +30,8 @@ This is an **Angular-based web application** designed for managing TV series wit
 - View all available TV series
 - Search TV series by title
 - View full details of a selected TV series
+- Send user requests through contact us
 
----
 
 ## 🛠️ Technologies & Tools Used
 
