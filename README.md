@@ -53,6 +53,7 @@ This is an **Angular-based web application** designed for managing TV series wit
 ---
 
 ## 📸 UI Snapshots
+<div style="display:flex; gap:8px;">
 <img src="public/login1.png" width="150">
 <img src="public/register1.png" width="150">
 <img src="public/home1.png" width="150">
@@ -72,6 +73,7 @@ This is an **Angular-based web application** designed for managing TV series wit
 <img src="public/contact1.png" width="150">
 <img src="public/4042.png" width="150">
 <img src="public/theme.png" width="150">
+</div>
 ---
 
 ## 🚀 Getting Started
