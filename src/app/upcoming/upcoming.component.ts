@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { SharedService } from '../service/shared.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-upcoming',
@@ -6,15 +8,23 @@ import { Component } from '@angular/core';
   templateUrl: './upcoming.component.html',
   styleUrl: './upcoming.component.scss'
 })
-export class UpcomingComponent {
+export class UpcomingComponent  implements OnDestroy{
 
   upcoming: any[] = [];
+  stop$ = new Subject<void>();
 
-  ngOnInit(): void{
-    
+  constructor(private sharedService: SharedService) { }
+
+  ngOnInit(): void {
+    this.sharedService.upcomingSeries$.pipe(takeUntil(this.stop$)).subscribe(data => this.upcoming = data);
   }
-  
-  select(item: any): void{
-    
+
+  select(item: any): void {
+
+  }
+
+  ngOnDestroy(): void {
+    this.stop$.next();
+    this.stop$.complete();
   }
 }
