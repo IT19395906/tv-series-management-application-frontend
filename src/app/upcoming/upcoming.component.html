@@ -1,1 +1,16 @@
-<p>upcoming works!</p>
+<ng-container *ngIf="upcoming.length; else noData">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let item of upcoming">
+            <div class="card mb-2" (click)="select(item)">
+                <img [src]="item.img" class="card-img-top" alt="img" />
+                <div class="card-body">
+                    <h5>{{item.title}}</h5>
+                    <p>{{item.releaseDate}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-template #noData>
+    <p class="text-muted">No Record Found</p>
+</ng-template>

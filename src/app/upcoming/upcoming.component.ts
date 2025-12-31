@@ -8,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class UpcomingComponent {
 
+  upcoming: any[] = [];
+
+  ngOnInit(): void{
+    
+  }
+  
+  select(item: any): void{
+    
+  }
 }
