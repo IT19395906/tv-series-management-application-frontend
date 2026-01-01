@@ -8,7 +8,7 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './upcoming.component.html',
   styleUrl: './upcoming.component.scss'
 })
-export class UpcomingComponent  implements OnDestroy{
+export class UpcomingComponent implements OnDestroy {
 
   upcoming: any[] = [];
   stop$ = new Subject<void>();
@@ -16,7 +16,8 @@ export class UpcomingComponent  implements OnDestroy{
   constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.sharedService.upcomingSeries$.pipe(takeUntil(this.stop$)).subscribe(data => this.upcoming = data);
+    this.sharedService.upcomingSeries$.pipe(takeUntil(this.stop$)).subscribe(
+      data => this.upcoming = data.sort((a, b) => a.releaseDate - b.releaseDate));
   }
 
   select(item: any): void {
