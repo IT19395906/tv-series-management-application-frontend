@@ -71,6 +71,19 @@ export const ROUTES: SidebarValues[] = [
     permission: ''
   },
   {
+    path: 'add-upcoming',
+    title: 'Add Upcoming',
+    iconType: 'fa',
+    icon: 'fa-calendar-plus',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [],
+    disabled: false,
+    permission: ''
+  },
+  {
     path: 'contact',
     title: 'Contact Us',
     iconType: 'fa',

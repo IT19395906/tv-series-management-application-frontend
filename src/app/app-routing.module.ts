@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { ContactComponent } from './contact/contact.component';
+import { AddUpcomingItemComponent } from './add-upcoming-item/add-upcoming-item.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'upcoming', component: UpcomingComponent },
   { path: 'contact', component: ContactComponent },
+  {path: 'add-upcoming', component: AddUpcomingItemComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 
