@@ -2,7 +2,7 @@
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let item of upcoming; let i = index" [class.active]="i === 0">
-                <div class="card mb-2" (click)="select(item)">
+                <div class="card mb-2" (click)="select(item)" [ngClass]="{'selectedCard':selected === item}">
                     <img [src]="item.img" class="card-img-top" alt="img" />
                     <div class="card-body">
                         <h5>{{item.title}}</h5>

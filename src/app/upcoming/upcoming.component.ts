@@ -12,6 +12,7 @@ export class UpcomingComponent implements OnDestroy {
 
   upcoming: any[] = [];
   stop$ = new Subject<void>();
+  selected: any;
 
   constructor(private sharedService: SharedService) { }
 
@@ -21,7 +22,7 @@ export class UpcomingComponent implements OnDestroy {
   }
 
   select(item: any): void {
-       console.log(item);
+       this.selected = item;
   }
 
   ngOnDestroy(): void {
