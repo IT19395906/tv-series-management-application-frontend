@@ -21,7 +21,7 @@ export class UpcomingComponent implements OnDestroy {
   }
 
   select(item: any): void {
-
+       console.log(item);
   }
 
   ngOnDestroy(): void {
