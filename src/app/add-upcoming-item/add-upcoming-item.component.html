@@ -1,1 +1,17 @@
-<p>add-upcoming-item works!</p>
+<div class="card rounded shadow">
+    <div class="card-header text-center">
+        <h4>Add Upcoming Tv Series</h4>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="upcomingForm">
+            <div>
+                <label for="title" class="form-label fw-bold">Title</label>
+                <input type="text" id="title" class="form-control"  formControlName="title" required placeholder="Enter Title"/>
+            </div>
+            <div>
+                <label for="rDate" class="form-label fw-bold">ReleaseDate</label>
+                <input type="date" id="rDate" class="form-control"  formControlName="rDate" required placeholder="Enter Release Date"/>
+            </div>
+        </form>
+    </div>
+</div>
