@@ -3,15 +3,16 @@
         <h4>Add Upcoming Tv Series</h4>
     </div>
     <div class="card-body">
-        <form [formGroup]="upcomingForm">
-            <div>
+        <form [formGroup]="upcomingForm" (ngSubmit)="onSubmit()">
+            <div class="mb-2">
                 <label for="title" class="form-label fw-bold">Title</label>
                 <input type="text" id="title" class="form-control"  formControlName="title" required placeholder="Enter Title"/>
             </div>
-            <div>
+            <div class="mb-2">
                 <label for="rDate" class="form-label fw-bold">ReleaseDate</label>
                 <input type="date" id="rDate" class="form-control"  formControlName="rDate" required placeholder="Enter Release Date"/>
             </div>
+            <button class="btn btn-primary w-25" type="submit">Add</button>
         </form>
     </div>
 </div>

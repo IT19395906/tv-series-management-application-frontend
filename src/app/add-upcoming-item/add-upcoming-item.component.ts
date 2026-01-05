@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-upcoming-item',
@@ -11,7 +12,10 @@ export class AddUpcomingItemComponent {
 
   upcomingForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.initUpcomingForm();
@@ -22,6 +26,13 @@ export class AddUpcomingItemComponent {
       title: ['', Validators.required],
       rDate: ['', Validators.required]
     })
+  }
+
+  onSubmit(): void {
+    if (this.upcomingForm.invalid) {
+      this.toastr.error("Invalid Form", "Error");
+      return;
+    }
   }
 
 }
