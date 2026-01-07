@@ -6,7 +6,7 @@
         <form [formGroup]="upcomingForm" (ngSubmit)="onSubmit()">
             <div class="mb-2">
                 <label for="title" class="form-label fw-bold">Title</label>
-                <input type="text" id="title" class="form-control"  formControlName="title" required placeholder="Enter Title"/>
+                <input type="text" id="title" class="form-control"  formControlName="title" required placeholder="Enter Title" maxlength="50"/>
             </div>
             <div class="mb-2">
                 <label for="rDate" class="form-label fw-bold">ReleaseDate</label>
