@@ -111,4 +111,10 @@ export class TvSeriesService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<any>('http://localhost:8080/api/requests/contact', submitDto, { headers });
   }
+
+  getUpcoming(): Observable<any> {
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(this.apiUrl + 'upcoming/', {headers});
+  }
 }
